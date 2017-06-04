@@ -1,17 +1,20 @@
-Main: Main.o Persona.o Admin.o Jugador.o Personaje.o Humano.o Enano.o Elfo.o Criatura.o guerreroHumano.o Sacerdote.o Brujo.o Mago.o Ladron.o Enano.o enanoGuerrero.o Herrero.o Elfo.o Sanador.o elfoGuerrero.o Trolls.o Duendes.o Bestias.o Burro.o Caballo.o Dragon.o Batalla.o Pueblo.o 
-	g++ Main.o Persona.o Admin.o Jugador.o Personaje.o Humano.o Enano.o Elfo.o Criatura.o guerreroHumano.o Sacerdote.o Brujo.o Mago.o Ladron.o Enano.o enanoGuerrero.o Herrero.o Elfo.o Sanador.o elfoGuerrero.o Trolls.o Duendes.o Bestias.o Burro.o Caballo.o Dragon.o Batalla.o Pueblo.o -o Main
+Main: Main.o Persona.o Administrador.o Jugador.o Item.o Personaje.o Humano.o Enano.o Noble.o Guerrero.o Ladron.o Witcher.o EnanoGuerrero.o EnanoHerrero.o Elfo.o ElfoGuerrero.o ElfoSanador.o Bestia.o Burro.o Dragon.o Caballo.o 
+	g++ Main.o Persona.o Administrador.o Jugador.o Item.o Personaje.o Humano.o Enano.o Noble.o Guerrero.o Ladron.o Witcher.o EnanoGuerrero.o EnanoHerrero.o Elfo.o ElfoGuerrero.o ElfoSanador.o Bestia.o Burro.o Dragon.o Caballo.o -lncurses -o Main
 
-Main.o: Main.cpp Persona.h Admin.h Jugador.h Personaje.h Humano.h Enano.h Elfo.h Criatura.h guerreroHumano.h Sacerdote.h Brujo.h Mago.h Ladron.h Enano.h enanoGuerrero.h Herrero.h Elfo.h Sanador.h elfoGuerrero.h Trolls.h Duendes.h Bestias.h Burro.h Caballo.h Dragon.h Batalla.h Pueblo.h 
+Main.o: Main.cpp Persona.h Administrador.h Jugador.h Item.h Personaje.h Humano.h Noble.h Guerrero.h Ladron.h Witcher.h Enano.h EnanoGuerrero.h EnanoHerrero.h Elfo.h ElfoGuerrero.h ElfoSanador.h Bestia.h Burro.h Dragon.h Caballo.h 
 	g++ -c Main.cpp
  
 Persona.o: Persona.cpp Persona.h 
 	g++ -c Persona.cpp 
  
-Admin.o:  Admin.h Admin.cpp Persona.h 
-	g++ -c Admin.cpp 
+Administrador.o:  Administrador.h Administrador.cpp Persona.h 
+	g++ -c Administrador.cpp 
  
 Jugador.o:  Jugador.h Jugador.cpp Persona.h 
 	g++ -c Jugador.cpp 
+ 
+Item.o: Item.cpp Item.h 
+	g++ -c Item.cpp 
  
 Personaje.o: Personaje.cpp Personaje.h 
 	g++ -c Personaje.cpp 
@@ -21,69 +24,45 @@ Humano.o:  Humano.h Humano.cpp Personaje.h
  
 Enano.o:  Enano.h Enano.cpp Personaje.h 
 	g++ -c Enano.cpp 
- 
+	 
 Elfo.o:  Elfo.h Elfo.cpp Personaje.h 
 	g++ -c Elfo.cpp 
  
-Criatura.o:  Criatura.h Criatura.cpp Personaje.h 
-	g++ -c Criatura.cpp 
+Noble.o:  Noble.h Noble.cpp Humano.h 
+	g++ -c Noble.cpp 
  
-guerreroHumano.o:  guerreroHumano.h guerreroHumano.cpp Humano.h Personaje.h
-	g++ -c guerreroHumano.cpp 
+Guerrero.o:  Guerrero.h Guerrero.cpp Humano.h 
+	g++ -c Guerrero.cpp 
  
-Sacerdote.o:  Sacerdote.h Sacerdote.cpp Humano.h Personaje.h
-	g++ -c Sacerdote.cpp 
- 
-Brujo.o:  Brujo.h Brujo.cpp Humano.h Personaje.h
-	g++ -c Brujo.cpp 
- 
-Mago.o:  Mago.h Mago.cpp Humano.h Personaje.h
-	g++ -c Mago.cpp 
- 
-Ladron.o:  Ladron.h Ladron.cpp Humano.h Personaje.h
+Ladron.o:  Ladron.h Ladron.cpp Humano.h 
 	g++ -c Ladron.cpp 
  
-Enano.o: Enano.cpp Enano.h Personaje.h
-	g++ -c Enano.cpp 
+Witcher.o:  Witcher.h Witcher.cpp Humano.h 
+	g++ -c Witcher.cpp 
  
-enanoGuerrero.o:  enanoGuerrero.h enanoGuerrero.cpp Enano.h Personaje.h
-	g++ -c enanoGuerrero.cpp 
+EnanoGuerrero.o:  EnanoGuerrero.h EnanoGuerrero.cpp Enano.h 
+	g++ -c EnanoGuerrero.cpp 
  
-Herrero.o:  Herrero.h Herrero.cpp Enano.h Personaje.h
-	g++ -c Herrero.cpp 
+EnanoHerrero.o:  EnanoHerrero.h EnanoHerrero.cpp Enano.h 
+	g++ -c EnanoHerrero.cpp 
  
-Elfo.o: Elfo.cpp Elfo.h Personaje.h
-	g++ -c Elfo.cpp 
+ElfoGuerrero.o:  ElfoGuerrero.h ElfoGuerrero.cpp Elfo.h 
+	g++ -c ElfoGuerrero.cpp 
  
-Sanador.o:  Sanador.h Sanador.cpp Elfo.h Personaje.h
-	g++ -c Sanador.cpp 
+ElfoSanador.o:  ElfoSanador.h ElfoSanador.cpp Elfo.h 
+	g++ -c ElfoSanador.cpp 
+	 
+Bestia.o: Bestia.cpp Bestia.h 
+	g++ -c Bestia.cpp 
  
-elfoGuerrero.o:  elfoGuerrero.h elfoGuerrero.cpp Elfo.h Personaje.h
-	g++ -c elfoGuerrero.cpp 
- 
-Trolls.o: Trolls.cpp Trolls.h Personaje.h
-	g++ -c Trolls.cpp 
- 
-Duendes.o: Duendes.cpp Duendes.h Personaje.h
-	g++ -c Duendes.cpp 
- 
-Bestias.o: Bestias.cpp Bestias.h 
-	g++ -c Bestias.cpp 
- 
-Burro.o:  Burro.h Burro.cpp Bestias.h 
+Burro.o:  Burro.h Burro.cpp Bestia.h 
 	g++ -c Burro.cpp 
  
-Caballo.o:  Caballo.h Caballo.cpp Bestias.h 
-	g++ -c Caballo.cpp 
- 
-Dragon.o:  Dragon.h Dragon.cpp Bestias.h 
+Dragon.o:  Dragon.h Dragon.cpp Bestia.h 
 	g++ -c Dragon.cpp 
  
-Batalla.o: Batalla.cpp Batalla.h 
-	g++ -c Batalla.cpp 
- 
-Pueblo.o: Pueblo.cpp Pueblo.h 
-	g++ -c Pueblo.cpp 
+Caballo.o:  Caballo.h Caballo.cpp Bestia.h 
+	g++ -c Caballo.cpp 
  
 clean: 
 	rm -f *.0 *.main
