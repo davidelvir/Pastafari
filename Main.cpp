@@ -33,11 +33,11 @@ int main() {
 	int yMax, xMax;
 	getmaxyx(stdscr, yMax, xMax);
 
-	WINDOW = inputwin = newwin(4, xMax-12, yMax-8,5);
-	box(inputwin, 0, 0);
+	WINDOW * menuwin = newwin(4, xMax-12, yMax-8,5);
+	box(menuwin, 0, 0);
 	refresh();
-	wrefresh(inputwin);
-	keypad(inputwin, true);
+	wrefresh(menuwin);
+	keypad(menuwin, true);
 
 	string choices[2]={"LOGIN","SALIR"};
 	int choice;
