@@ -15,12 +15,10 @@ string Bestia:: getNombre(){
 void Bestia:: setNombre(string nombre){
 	this->nombre=nombre;
 }
-/*vector<Item> Bestia:: getItem(){
-	return items;
-}*/
-/*void Bestia:: setItems(vector<Items> items){
-	this->items=items;
+Item* Bestia:: getItem(int i){
+	return items[i];
 }
-void Bestia::setItem(Item item, int pos){
+
+void Bestia::setItem(Item* item, int pos){
 	items[pos]=item;
-}*/
+}

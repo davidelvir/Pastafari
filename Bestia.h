@@ -8,15 +8,15 @@ using namespace std;
 class Bestia
 {
 	protected:
-		vector<Item> items;
+		vector<Item*> items;
 		string nombre;
 	public:
 		Bestia();
 		Bestia(string);
 
-		//vector<Item> getItems();
-		//void setItems(vector<Item>);
-		void setItem(Item item,int);
+		Item* getItem(int);
+		
+		void setItem(Item* item,int);
 		
 		string getNombre();
 		void setNombre(string nombre);				
