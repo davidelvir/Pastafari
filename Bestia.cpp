@@ -15,6 +15,7 @@ string Bestia:: getNombre(){
 void Bestia:: setNombre(string nombre){
 	this->nombre=nombre;
 }
+
 Item* Bestia:: getItem(int i){
 	return items[i];
 }

@@ -1,4 +1,3 @@
-#include <iostream>
 #include <string>
 #include <vector>
 #include "Item.h"
@@ -8,6 +7,7 @@ using namespace std;
 
 #ifndef PERSONAJE_H
 #define PERSONAJE_H
+
 class Personaje{
     protected:
         string Nombre;
@@ -31,6 +31,15 @@ class Personaje{
         
         Personaje(string, double,double,double,string,int,int,int,string,double);
         Personaje();
+
+        //Set y Get de Aliados;
+
+        Personaje* getAliado(int);
+
+        void setAliado(Personaje*);
+
+        //_________________________________
+
 
         double getDinero();
         void setDinero(double);

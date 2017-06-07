@@ -1,7 +1,7 @@
 #ifndef BESTIAS_H
 #define BESTIAS_H
 #include "Item.h"
-#include<string>
+#include <string>
 #include <vector>
 
 using namespace std;

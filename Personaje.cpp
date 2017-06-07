@@ -2,17 +2,18 @@
 #include "Item.h"
 #include <string>
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
 Personaje::Personaje(string Nombre, double Vida, double Defensa, double Ataque,string Reputacion,int Nivel,int Experiencia,int Bolas,string estiloCabello,double Dinero){
 
-	  this->Nombre=Nombre;
+	this->Nombre=Nombre;
     this->Vida=Vida;
     this->Defensa=Defensa;
     this->Ataque=Ataque;
     this->Reputacion=Reputacion;
-	  this->Nivel=Nivel;
+	this->Nivel=Nivel;
     this->Experiencia=Experiencia;
     this->Bolas=Bolas;
     this->estiloCabello=estiloCabello;
@@ -23,6 +24,18 @@ Personaje::Personaje(string Nombre, double Vida, double Defensa, double Ataque,s
 Personaje::Personaje(){
 	
 }
+
+//se necesita un getAliado que retorne el arraylist, para poder tener el tamaño del arraylist ;
+//y asi en el metodo batalla hacer un for que recorra ese arreglo, para poder listarlos;
+
+Personaje* Personaje::getAliado(int pos){
+	return Aliados[pos];
+}
+
+void Personaje:: setAliado(Personaje* aliado){
+	Aliados.push_back(aliado);
+}
+
 
 double Personaje::getDinero(){
   return Dinero;
