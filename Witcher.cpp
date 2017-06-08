@@ -28,3 +28,22 @@ Witcher::Witcher(){
 	this->Bolas=0;
 
 }
+
+void Witcher::Ataque(Personaje* enemigo){
+  double damage = Ataque - (enemigo->getDefensa()*0.25);
+  double vidaActual = enemigo->getVida();
+
+  enemigo->setVida(vidaActual-damage);
+}
+
+void Witcher::Habilidad1(Personaje* enemigo){
+  double damage = Ataque - (enemigo->getDefensa()*0.6);
+  double vidaActual = enemigo->getVida();
+
+  enemigo->setVida(vidaActual-damage);
+}
+
+void Witcher::Habilidad2(Personaje* enemigo){
+  Ataque+=Ataque*0.05;
+  Defensa+=Defensa*0.05;
+}
