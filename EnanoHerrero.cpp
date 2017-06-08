@@ -24,3 +24,40 @@ EnanoHerrero::EnanoHerrero(string Nombre, double Vida, double Defensa, double At
 EnanoHerrero::EnanoHerrero(){
 	
 }
+
+bool EnanoHerrero::getTanque(){
+  return tanque;
+}
+
+void EnanoHerrero::setTanque(bool atanque){
+  tanque = atanque;
+}
+
+void EnanoHerrero::Ataque(Personaje* enemigo){
+    //Ataque normal del Enano
+
+        double impacto;
+        double saludEnemiga;
+        double defensaEnemiga;
+        double nuevaSalud;
+        
+        saludEnemiga= enemigo->getVida();
+        defensaEnemiga= enemigos->getDefensa();
+        impacto = Ataque-(defensaEnemiga*0.60);
+        nuevaSalud= saludEnemiga-impacto;
+        enemigos->setVida(nuevaSalud);
+
+
+}
+
+void EnanoHerrero::Habilidad1(Personaje* enemigo){// Se hace tanque
+    //Habilidad 1 
+    tanque=true;
+
+}
+
+void EnanoHerrero::Habilidad2(Personaje* aliado){//Da habilidad de ataque +30 a un aliado!
+    //Habilidad 2 
+    aliado->getAtaque+=30
+
+}
