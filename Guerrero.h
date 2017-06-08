@@ -15,7 +15,10 @@ class Guerrero:public Humano{
     public:
         
     	Guerrero(string, double,double,double,string,int,int,int,string, string, double);
-        Guerrero();
+      Guerrero();
+      
+      virtual void Ataque(Personaje*);
+
         
 };
 #endif

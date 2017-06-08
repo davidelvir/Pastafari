@@ -64,9 +64,9 @@ class Personaje{
         int getNivel();
         void setNivel(int);
 
-        virtual void Ataque(Personaje*,Personaje*)=0;
-        virtual void Habilidad2(Personaje*,Personaje*)=0;
-        virtual void Habilidad1(Personaje*,Personaje*)=0;
+        virtual void Ataque(Personaje*)=0;
+        virtual void Habilidad2(Personaje*)=0;
+        virtual void Habilidad1(Personaje*)=0;
         /*virtual void Comprar(double)=0;
         virtual void CortarPelo(double)=0;
         virtual void ArmaEspecial(Personaje*,Personaje*)=0;*/
