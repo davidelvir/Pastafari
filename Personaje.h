@@ -64,6 +64,9 @@ class Personaje{
         int getNivel();
         void setNivel(int);
 
+        bool getStamina();
+        void setStamina(bool);
+
         virtual void Ataque(Personaje*)=0;
         virtual void Habilidad2(Personaje*)=0;
         virtual void Habilidad1(Personaje*)=0;

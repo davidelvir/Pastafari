@@ -18,6 +18,8 @@ class Guerrero:public Humano{
       Guerrero();
       
       virtual void Ataque(Personaje*);
+      virtual void Habilidad1(Personaje*);
+      virtual void Habilidad2(Personaje*);
 
         
 };
