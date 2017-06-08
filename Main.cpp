@@ -35,33 +35,42 @@ void cleanScreen();
 void historia();
 
 int main() {
-	initscr();
-	noecho();
-	cbreak();
+
 	vector<string> usuarios;
 	vector<string> contrasenas;
 	Jugador jugadorRaiz;
 	Administrador adminRaiz;
-	string usuarioAdmin = "MONESVOL2017";
-	string contraAdmin = "HailKingOswaldoTheThird";
+	string usuarioAdmin = "qwerty";
+	string contraAdmin = "v";
 	usuarios.push_back(usuarioAdmin);
 	contrasenas.push_back(contraAdmin);
 	bool juego = true;
-	int yMax, xMax;
-	getmaxyx(stdscr, yMax, xMax);
-
-	WINDOW * menuwin = newwin(5, xMax-20, yMax-20,5);
-	box(menuwin, 0, 0);	
-	refresh();
-	wrefresh(menuwin);
-	keypad(menuwin, true);
-
-	char menuPrincipal='s';
-	while(menuPrincipal=='s'||menuPrincipal=='S'){
-	string choices[3]={"<<>>>LOGIN<<<>>","Historia del pastafarismo", "Salir"};
-	int choice;
-	int highlight = 0;
 	
+
+	char menuPrincipal[2];
+	menuPrincipal[0]='s';
+	while(menuPrincipal[0]=='s'||menuPrincipal[0]=='S'){
+		initscr();
+		start_color();			
+		init_pair(1, COLOR_GREEN, COLOR_BLACK);
+		attron(COLOR_PAIR(1));
+		
+		noecho();
+		cbreak();
+		echo();
+
+
+		int yMax, xMax;
+		getmaxyx(stdscr, yMax, xMax);
+		WINDOW * menuwin = newwin(5, xMax-20, yMax-20,5);
+		box(menuwin, 0, 0);	
+		refresh();
+		wrefresh(menuwin);
+		keypad(menuwin, true);
+		string choices[3]={"LOGIN","Crear cuenta", "Salir"};
+		int choice;
+		int highlight = 0;
+
 	while(1)
 	{
 		for(int i = 0; i < 3; i++)
@@ -93,7 +102,7 @@ int main() {
 	}
 	endwin();
 	//printw("Your choice was: %s", choices[highlight].c_str());
-	if(choices[highlight]=="Historia del pastafarismo")
+	if(choices[highlight]=="Crear cuenta")
 	{
 		cleanScreen();
 		historia();
@@ -101,7 +110,7 @@ int main() {
 		exit(0);
 
 	}
-	if(choices[highlight]=="<<>>>LOGIN<<<>>"){
+	if(choices[highlight]=="LOGIN"){
 
 		start_color();
 		echo();
@@ -118,51 +127,74 @@ int main() {
 			
 			for (int i = 0; i < usuarios.size(); ++i)
 			{
-				if(usuarios[i]=="MONESVOL2017"){
-					mvprintw(5, 10, "* Ingrese la contraseña del Admin.:");
+				if(usuarios[i]=="qwerty"){
+					mvprintw(5, 10, "* Ingrese la contraseña del Administrador:");
 					getstr(resp);
 					string contraTemp(resp);
 					cleanScreen();
-					if(contrasenas[i]=="HailKingOswaldoTheThird"){
-						
+					if(contrasenas[i]=="v"){
+						bool logout;
+						logout=true;
+						while(logout==true){
+							clear();
 						mvprintw(2, 10, "MENU Administrador");
-						mvprintw(3, 10, "1) Agregar cuentas.");
-						mvprintw(4, 10, "2) Listar cuentas.");
+						mvprintw(3, 10, "1) Agregar cuentas");
+						mvprintw(4, 10, "2) Listar cuentas");
 						mvprintw(5, 10, "3) Borrar cuentas ");
 						mvprintw(6, 10, "4) Autodestruccion");
-						mvprintw(7, 10, "5) Salir del sistema");
-						mvprintw(8, 10, "6) Salir del menu");
-
+						mvprintw(7, 10, "5) Logout");
+						mvprintw(8, 10, "6) Salir");
+						mvprintw(9, 10, "Ingrese opcion: ");
 						getstr(resp);
-						string cualquiera(resp);
-						int respInt = atoi(cualquiera.c_str());
-						if(respInt==1){
+						
+						if(resp[0]=='1'){
 
 						}//end respInt 1
-						if(respInt==2){
+						if(resp[0]=='2'){
 
 						}//end respInt 2
-						if(respInt==3){
+						if(resp[0]=='3'){
 
 						}//end respInt 3
-						if(respInt==4){
+						if(resp[0]=='4'){
 
 						}//end respInt 4
-						if(respInt==5){
-							exit(0);
+						if(resp[0]=='5'){
+							cleanScreen();
+							logout=false;
 						}//end respInt 5
+						if(resp[0]=='6'){
+								
+							juego=false;
+							logout=false;
+							cleanScreen();
+							clear();
+							exit(0);
+							
 
+						}//end respInt 5
+						if(resp[0]!='1'&&resp[0]!='2'&&resp[0]!='3'&&resp[0]!='4'&&resp[0]!='5'&&resp[0]!='6'){
+							clear();
+							mvprintw(2, 10, "Numero equivocado!");
+							mvprintw(3, 10, "Ingrese enter: ");
+							getstr(resp);
+						}
 
-					
+					}//end logout
 				}//end if
 			}//end for
 			}
 
 		}
 	}
+	cleanScreen();
 	mvprintw(8, 10, "Desea continuar? [s/n]");
+	mvprintw(9, 10, "Ingrese una opcion: ");
+	clear();
 	getstr(menuPrincipal);
+	endwin();
 	}
+	cleanScreen();
 	getch();
 	endwin();
 return 0;
