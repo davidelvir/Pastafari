@@ -51,9 +51,6 @@ void Ladron::Habilidad1(Personaje* enemigo){// roba dinero y salud al enemigo
 
 void Ladron::Habilidad2(Personaje* enemigo){//El golpe tiene probabilidad de critico
 	//Habilidad 2 del ladron
-
-
-
 	#include <ctime>
 	#include <cstdlib>
 
@@ -71,10 +68,6 @@ void Ladron::Habilidad2(Personaje* enemigo){//El golpe tiene probabilidad de cri
         impacto = Ataque-(defensaEnemiga*0.75);
         nuevaSalud= saludEnemiga-impacto*2;
         enemigos->setVida(nuevaSalud);
-
-
-
-
      } else{
 
      	saludEnemiga= enemigo->getVida();
@@ -84,11 +77,6 @@ void Ladron::Habilidad2(Personaje* enemigo){//El golpe tiene probabilidad de cri
         enemigos->setVida(nuevaSalud);
 
      }
-
-
-
-
-
 
 }
 
