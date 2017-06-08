@@ -50,14 +50,14 @@ int main() {
 	char menuPrincipal[2];
 	menuPrincipal[0]='s';
 	while(menuPrincipal[0]=='s'||menuPrincipal[0]=='S'){
-		initscr();
-		start_color();			
-		init_pair(1, COLOR_GREEN, COLOR_BLACK);
-		attron(COLOR_PAIR(1));
-		
+		initscr();			/* Start curses mode 		  */
+		start_color();
+		refresh();
+
+    	init_pair(1, COLOR_GREEN, COLOR_WHITE );
+    	bkgd( COLOR_PAIR(1) );
 		noecho();
 		cbreak();
-		echo();
 
 
 		int yMax, xMax;

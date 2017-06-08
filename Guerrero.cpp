@@ -28,3 +28,19 @@ Guerrero::Guerrero(){
 	this->Bolas=0;
 
 }
+
+void Guerrero::Ataque(Personaje* enemigo){
+  double damage = Ataque - (enemigo->getDefensa()*0.5);
+  double saludActual = enemigo->getVida();
+  enemigo->setVida(saludActual - damage);
+}
+
+void Guerrero::Habilidad1(Personaje* enemigo){
+  double saludActual = enemigo->getVida();
+  double damage = Ataque * 0.2;
+  enemigo->setVida(saludActual - damage);
+}
+
+void Guerrero::Habilidad2(Personaje* enemigo){
+  enemigo->setStamina(false);
+}

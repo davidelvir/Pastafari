@@ -16,6 +16,9 @@ class EnanoGuerrero: public Enano{
         EnanoGuerrero(string, double,double,double,string,int,int,int,string,double,string,double);
         EnanoGuerrero();
 
+	virtual void Ataque(Personaje*);//enemigo
+  	virtual void Habilidad2(Personaje*);
+  	virtual void Habilidad1(Personaje*);
     
 };
 #endif

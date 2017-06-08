@@ -7,6 +7,9 @@ class ElfoGuerrero : public Elfo{
 
   ElfoGuerrero();
 
+  virtual void Ataque(Personaje*);//enemigo
+  virtual void Habilidad2(Personaje*);
+  virtual void Habilidad1(Personaje*);
 };
 
 #endif

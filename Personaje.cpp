@@ -87,3 +87,11 @@ int Personaje::getNivel(){
 void Personaje::setNivel(int pNivel){
 	Nivel = pNivel;
 }
+
+bool Personaje::getStamina(){
+  return Stamina;
+}
+
+void Personaje::setStamina(bool pStamina){
+  Stamina = pStamina;
+}
