@@ -74,9 +74,6 @@ void EnanoGuerrero::Habilidad2(Personaje* enemigo){//El golpe tiene probabilidad
     if(stun%3==0){
         enemigo->setStamina(false);
 
-
-
-
      } else{
 
         saludEnemiga= enemigo->getVida();

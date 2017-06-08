@@ -4,8 +4,11 @@
 
 class ElfoSanador : public Elfo{
 
-  ElfoSanador();
-
+   ElfoSanador();
+	
+   virtual void Ataque(Personaje*);//enemigo
+   virtual void Habilidad2(Personaje*);
+   virtual void Habilidad1(Personaje*);
 
 };
 
