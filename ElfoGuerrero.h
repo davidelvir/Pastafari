@@ -3,6 +3,7 @@
 #define ELFOGUERRERO_H
 
 class ElfoGuerrero : public Elfo{
+  public: 
 
   ElfoGuerrero();
 

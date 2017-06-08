@@ -29,8 +29,22 @@ using namespace std;
 int main(){
 
 	vector <Batalla*> batallas;
+  
+  Personaje* Heroe = new Witcher();
+ 
+  Heroe->setNombre("Alexi");
 
+  Personaje* A1 = new Witcher();
+  Personaje* A2 = new Witcher();
+
+  A1->setNombre("Aceituno");
+  A2->setNombre("Hellbert");
+
+  Heroe->setAliado(A1);
+  Heroe->setAliado(A2);
 	Batalla* temp = new Batalla();
+
+  temp->BatallaEpica(Heroe);
 
 	cout <<"HOLA";
 

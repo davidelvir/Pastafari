@@ -36,7 +36,9 @@ void Personaje:: setAliado(Personaje* aliado){
 	Aliados.push_back(aliado);
 }
 
-
+vector<Personaje*>& Personaje::getAliados(){
+  return Aliados;
+}
 double Personaje::getDinero(){
   return Dinero;
 }
