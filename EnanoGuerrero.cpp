@@ -1,5 +1,8 @@
 #include "Personaje.h"
 #include "EnanoGuerrero.h"
+#include <ctime>
+#include <cstdlib>
+
 #include <string>
 
 using namespace std;
@@ -25,7 +28,7 @@ EnanoGuerrero::EnanoGuerrero(){
 	
 }
 
-void EnanoGuerrero::Ataque(Personaje* enemigo){
+void EnanoGuerrero::Atacar(Personaje* enemigo){
     //Ataque normal del ladron
 
         double impacto;
@@ -34,10 +37,10 @@ void EnanoGuerrero::Ataque(Personaje* enemigo){
         double nuevaSalud;
         
         saludEnemiga= enemigo->getVida();
-        defensaEnemiga= enemigos->getDefensa();
+        defensaEnemiga= enemigo->getDefensa();
         impacto = Ataque-(defensaEnemiga*0.20);
         nuevaSalud= saludEnemiga-impacto;
-        enemigos->setVida(nuevaSalud);
+        enemigo->setVida(nuevaSalud);
 
 
 }
@@ -50,21 +53,18 @@ void EnanoGuerrero::Habilidad1(Personaje* enemigo){// roba dinero y salud al ene
         double nuevaSalud;
         
         saludEnemiga= enemigo->getVida();
-        defensaEnemiga= enemigos->getDefensa();
+        defensaEnemiga= enemigo->getDefensa();
         impacto = Ataque;
         nuevaSalud= saludEnemiga-impacto;
-        enemigos->setVida(nuevaSalud);
+        enemigo->setVida(nuevaSalud);
 
 }
 
 void EnanoGuerrero::Habilidad2(Personaje* enemigo){//El golpe tiene probabilidad de critico
-    //Chance de stun de 2 turnos randomly
-
-    #include <ctime>
-    #include <cstdlib>
+    //Chance de stun de 2 turnos randoml
 
     srand(time(0));
-    stun =rand()%13;
+    int stun =rand()%13;
      
     double impacto;
     double saludEnemiga;
@@ -77,10 +77,10 @@ void EnanoGuerrero::Habilidad2(Personaje* enemigo){//El golpe tiene probabilidad
      } else{
 
         saludEnemiga= enemigo->getVida();
-        defensaEnemiga= enemigos->getDefensa();
+        defensaEnemiga= enemigo->getDefensa();
         impacto = Ataque-(defensaEnemiga*0.35);
         nuevaSalud= saludEnemiga-impacto;
-        enemigos->setVida(nuevaSalud);
+        enemigo->setVida(nuevaSalud);
 
      }
 

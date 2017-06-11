@@ -13,7 +13,7 @@ ElfoSanador::ElfoSanador(){
 
 }
 
-void ElfoSanador::Ataque(Personaje* enemigo){
+void ElfoSanador::Atacar(Personaje* enemigo){
 	//Ataque normal del ElfoSanador
 
 		double impacto;
@@ -22,10 +22,10 @@ void ElfoSanador::Ataque(Personaje* enemigo){
         double nuevaSalud;
         
         saludEnemiga= enemigo->getVida();
-        defensaEnemiga= enemigos->getDefensa();
+        defensaEnemiga= enemigo->getDefensa();
         impacto = Ataque-(defensaEnemiga*0.75);
         nuevaSalud= saludEnemiga-impacto;
-        enemigos->setVida(nuevaSalud);
+        enemigo->setVida(nuevaSalud);
 
 
 }

@@ -42,6 +42,8 @@ class Personaje{
 
         //_________________________________
 
+	bool getStamina();
+	void setStamina(bool);
 
         double getDinero();
         void setDinero(double);
@@ -64,7 +66,7 @@ class Personaje{
         int getNivel();
         void setNivel(int);
 
-        virtual void Ataque(Personaje*)=0;
+        virtual void Atacar(Personaje*)=0;
         virtual void Habilidad2(Personaje*)=0;
         virtual void Habilidad1(Personaje*)=0;
         /*virtual void Comprar(double)=0;

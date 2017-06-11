@@ -13,7 +13,7 @@ ElfoGuerrero::ElfoGuerrero(){
   this->Bolas = 0;
 
 }
-void ElfoGuerrero::Ataque(Personaje* enemigo){
+void ElfoGuerrero::Atacar(Personaje* enemigo){
 	//Ataque normal del Elfo
 
 		double impacto;
@@ -22,15 +22,16 @@ void ElfoGuerrero::Ataque(Personaje* enemigo){
         double nuevaSalud;
         
         saludEnemiga= enemigo->getVida();
-        defensaEnemiga= enemigos->getDefensa();
+        defensaEnemiga= enemigo->getDefensa();
         impacto = Ataque-(defensaEnemiga*0.50);
         nuevaSalud= saludEnemiga-impacto;
-        enemigos->setVida(nuevaSalud);
+        enemigo->setVida(nuevaSalud);
 
 
 }
 
-void ElfoGuerrero::Habilidad1(){// roba dinero y salud al enemigo
+void ElfoGuerrero::Habilidad1(Personaje* LaMepen ){//s roba dinero y salud al enemigo
+
 	//Habilidad 1 del ladron
 
 	double impacto;
@@ -53,10 +54,10 @@ void ElfoGuerrero::Habilidad2(Personaje* enemigo){//El golpe tiene probabilidad 
         double nuevaSalud;
         
         saludEnemiga= enemigo->getVida();
-        defensaEnemiga= enemigos->getDefensa();
+        defensaEnemiga= enemigo->getDefensa();
         impacto = Ataque-(defensaEnemiga*0.50);
         nuevaSalud= saludEnemiga-impacto;
-        enemigos->setVida(nuevaSalud);
+        enemigo->setVida(nuevaSalud);
 
 }
 

@@ -1,5 +1,9 @@
 #include "Ladron.h"
+#include <ctime>
+#include <cstdlib>
 
+
+using namespace std;
 Ladron::Ladron(){
 
   this->Vida=300;
@@ -12,7 +16,7 @@ Ladron::Ladron(){
   this->Bolas=0;
 }
 
-void Ladron::Ataque(Personaje* enemigo){
+void Ladron::Atacar(Personaje* enemigo){
 	//Ataque normal del ladron
 
 		double impacto;
@@ -21,10 +25,10 @@ void Ladron::Ataque(Personaje* enemigo){
         double nuevaSalud;
         
         saludEnemiga= enemigo->getVida();
-        defensaEnemiga= enemigos->getDefensa();
+        defensaEnemiga= enemigo->getDefensa();
         impacto = Ataque-(defensaEnemiga*0.75);
         nuevaSalud= saludEnemiga-impacto;
-        enemigos->setVida(nuevaSalud);
+        enemigo->setVida(nuevaSalud);
 
 
 }
@@ -40,7 +44,7 @@ void Ladron::Habilidad1(Personaje* enemigo){// roba dinero y salud al enemigo
 
     saludEnemiga= enemigo->getVida();
     nuevaSalud= enemigo->getVida()*0.10;
-    enemigos->setVida(saludEnemiga-nuevaSalud);
+    enemigo->setVida(saludEnemiga-nuevaSalud);
 
 
     Vida+=nuevaSalud;
@@ -51,32 +55,29 @@ void Ladron::Habilidad1(Personaje* enemigo){// roba dinero y salud al enemigo
 
 void Ladron::Habilidad2(Personaje* enemigo){//El golpe tiene probabilidad de critico
 	//Habilidad 2 del ladron
-	#include <ctime>
-	#include <cstdlib>
 
 	srand(time(0));
-    critico =rand()%13;
+    	int critico =rand()%13;
      
    	double impacto;
-    double saludEnemiga;
-    double defensaEnemiga;
-    double nuevaSalud;
+    	double saludEnemiga;
+    	double defensaEnemiga;
+    	double nuevaSalud;
     	
     if(critico%3==0){
     	saludEnemiga= enemigo->getVida();
-        defensaEnemiga= enemigos->getDefensa();
+        defensaEnemiga= enemigo->getDefensa();
         impacto = Ataque-(defensaEnemiga*0.75);
         nuevaSalud= saludEnemiga-impacto*2;
-        enemigos->setVida(nuevaSalud);
+        enemigo->setVida(nuevaSalud);
      } else{
 
      	saludEnemiga= enemigo->getVida();
-        defensaEnemiga= enemigos->getDefensa();
+        defensaEnemiga= enemigo->getDefensa();
         impacto = Ataque-(defensaEnemiga*0.75);
         nuevaSalud= saludEnemiga-impacto;
-        enemigos->setVida(nuevaSalud);
+        enemigo->setVida(nuevaSalud);
 
      }
 
 }
-

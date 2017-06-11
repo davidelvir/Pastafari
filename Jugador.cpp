@@ -15,10 +15,10 @@ Jugador::Jugador(){
 
 }
 
-Personaje Jugador::getPersonaje(){
+Personaje* Jugador::getPersonaje(){
 	return personaje;
 }
 
-/*void Jugador::setPersonaje(Personaje personaje){
+void Jugador::setPersonaje(Personaje* personaje){
 	this->personaje=personaje;
-}*/
+}

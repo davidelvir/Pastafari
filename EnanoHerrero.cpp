@@ -33,7 +33,7 @@ void EnanoHerrero::setTanque(bool atanque){
   tanque = atanque;
 }
 
-void EnanoHerrero::Ataque(Personaje* enemigo){
+void EnanoHerrero::Atacar(Personaje* enemigo){
     //Ataque normal del Enano
 
         double impacto;
@@ -42,10 +42,10 @@ void EnanoHerrero::Ataque(Personaje* enemigo){
         double nuevaSalud;
         
         saludEnemiga= enemigo->getVida();
-        defensaEnemiga= enemigos->getDefensa();
+        defensaEnemiga= enemigo->getDefensa();
         impacto = Ataque-(defensaEnemiga*0.60);
         nuevaSalud= saludEnemiga-impacto;
-        enemigos->setVida(nuevaSalud);
+        enemigo->setVida(nuevaSalud);
 
 
 }
@@ -58,6 +58,8 @@ void EnanoHerrero::Habilidad1(Personaje* enemigo){// Se hace tanque
 
 void EnanoHerrero::Habilidad2(Personaje* aliado){//Da habilidad de ataque +30 a un aliado!
     //Habilidad 2 
-    aliado->getAtaque+=30
+	double aux;
+    	aux=aliado->getAtaque()+30;
+ 	aliado->setAtaque(aux);
 
 }

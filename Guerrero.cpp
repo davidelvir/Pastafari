@@ -29,7 +29,7 @@ Guerrero::Guerrero(){
 
 }
 
-void Guerrero::Ataque(Personaje* enemigo){
+void Guerrero::Atacar(Personaje* enemigo){
   double damage = Ataque - (enemigo->getDefensa()*0.5);
   double saludActual = enemigo->getVida();
   enemigo->setVida(saludActual - damage);

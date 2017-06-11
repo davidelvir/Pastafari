@@ -6,7 +6,7 @@ class ElfoSanador : public Elfo{
 
    ElfoSanador();
 	
-   virtual void Ataque(Personaje*);//enemigo
+   virtual void Atacar(Personaje*);//enemigo
    virtual void Habilidad2(Personaje*);
    virtual void Habilidad1(Personaje*);
 

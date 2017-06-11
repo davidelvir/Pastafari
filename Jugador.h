@@ -10,12 +10,12 @@ using namespace std;
 class Jugador: public Persona{
     protected:
 
-	Personaje personaje;
+	Personaje* personaje;
 
     public:
         Jugador(string,string,string,int,string);
         Jugador();
-		Personaje getPersonaje();
-		//void setPersonaje(Personaje personaje);
+		Personaje* getPersonaje();
+		void setPersonaje(Personaje*);
 };
 #endif

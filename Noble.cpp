@@ -13,16 +13,16 @@ Noble::Noble(){
   this->Bolas=0;
 }
 
-void Noble::Ataque(Personaje* enemigo){
+void Noble::Atacar(Personaje* enemigo){
 
   double damage = (Ataque * 0.5)-(enemigo->getDefensa()*0.1);
-  void saludActual = enemigo->getVida();
+  double saludActual = enemigo->getVida();
   enemigo->setVida(saludActual - damage);
   Vida += 20;
 }
 
 void Noble::Habilidad1(Personaje* aliado){
-  aliado += aliado->getVida()*0.3;
+  	aliado->setVida(aliado->getVida()*0.3);
 }
 
 void Noble::Habilidad2(Personaje* aliado){

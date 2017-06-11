@@ -29,7 +29,7 @@ Witcher::Witcher(){
 
 }
 
-void Witcher::Ataque(Personaje* enemigo){
+void Witcher::Atacar(Personaje* enemigo){
   double damage = Ataque - (enemigo->getDefensa()*0.25);
   double vidaActual = enemigo->getVida();
 

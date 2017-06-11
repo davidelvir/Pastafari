@@ -1,9 +1,15 @@
-Main: Main.o Persona.o Administrador.o Jugador.o Item.o Personaje.o Humano.o Enano.o Noble.o Guerrero.o Ladron.o Witcher.o EnanoGuerrero.o EnanoHerrero.o Elfo.o ElfoGuerrero.o ElfoSanador.o Bestia.o Burro.o Dragon.o Caballo.o 
-	g++ Main.o Persona.o Administrador.o Jugador.o Item.o Personaje.o Humano.o Enano.o Noble.o Guerrero.o Ladron.o Witcher.o EnanoGuerrero.o EnanoHerrero.o Elfo.o ElfoGuerrero.o ElfoSanador.o Bestia.o Burro.o Dragon.o Caballo.o -lncurses -o Main
+Main: Main.o Batalla.o Pastafari.o Persona.o Administrador.o Jugador.o Item.o Personaje.o Humano.o Enano.o Noble.o Guerrero.o Ladron.o Witcher.o EnanoGuerrero.o EnanoHerrero.o Elfo.o ElfoGuerrero.o ElfoSanador.o Bestia.o Burro.o Dragon.o Caballo.o 
+	g++ Main.o Persona.o Batalla.o Pastafari.o Administrador.o Jugador.o Item.o Personaje.o Humano.o Enano.o Noble.o Guerrero.o Ladron.o Witcher.o EnanoGuerrero.o EnanoHerrero.o Elfo.o ElfoGuerrero.o ElfoSanador.o Bestia.o Burro.o Dragon.o Caballo.o -lncurses -o Main
 
-Main.o: Main.cpp Persona.h Administrador.h Jugador.h Item.h Personaje.h Humano.h Noble.h Guerrero.h Ladron.h Witcher.h Enano.h EnanoGuerrero.h EnanoHerrero.h Elfo.h ElfoGuerrero.h ElfoSanador.h Bestia.h Burro.h Dragon.h Caballo.h 
+Main.o: Main.cpp Persona.h Administrador.h Jugador.h Pastafari.h Batalla.h Item.h Personaje.h Humano.h Noble.h Guerrero.h Ladron.h Witcher.h Enano.h EnanoGuerrero.h EnanoHerrero.h Elfo.h ElfoGuerrero.h ElfoSanador.h Bestia.h Burro.h Dragon.h Caballo.h 
 	g++ -c Main.cpp
+
+Batalla.h.o: Batalla.h.cpp Batalla.h.h 
+	g++ -c Batalla.h.cpp 
  
+Pastafari.o: Pastafari.cpp Pastafari.h 
+	g++ -c Pastafari.cpp
+ 	
 Persona.o: Persona.cpp Persona.h 
 	g++ -c Persona.cpp 
  
