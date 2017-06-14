@@ -10,7 +10,7 @@ using namespace std;
 class EnanoHerrero: public Enano{
     protected:
         
-    	bool tanque=false;
+    	bool tanque;
 
     public:
         

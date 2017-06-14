@@ -19,6 +19,7 @@ EnanoHerrero::EnanoHerrero(string Nombre, double Vida, double Defensa, double At
     this->Dinero=Dinero;
     this->ColorBarba=ColorBarba;
     this->TamanoBarba=TamanoBarba;
+    tanque= false;
 }
 
 EnanoHerrero::EnanoHerrero(){
@@ -26,10 +27,12 @@ EnanoHerrero::EnanoHerrero(){
 }
 
 bool EnanoHerrero::getTanque(){
+
   return tanque;
 }
 
 void EnanoHerrero::setTanque(bool atanque){
+
   tanque = atanque;
 }
 
