@@ -178,3 +178,6 @@ void Pastafari::historia(){
 		string historia;
         limpiarPantalla();
 }
+Pastafari::Pastafari(){
+
+}
