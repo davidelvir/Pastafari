@@ -7,10 +7,9 @@ void Pastafari::run(){
         vector<string> contrasenas;
         Jugador jugadorRaiz;
         Administrador adminRaiz;
-        string usuarioAdmin = "qwerty";
-        string contraAdmin = "v";
-        usuarios.push_back(usuarioAdmin);
-        contrasenas.push_back(contraAdmin);
+        adminRaiz.setUsername("u");
+        adminRaiz.setPassword("p");
+        vector<Jugador*> jugadores;
         bool juego = true;
  		char menuPrincipal[2];
         menuPrincipal[0]='s';
@@ -23,11 +22,10 @@ void Pastafari::run(){
         bkgd( COLOR_PAIR(1) );
                 noecho();
                 cbreak();
-
-
+                mvprintw(2, 10, "PASTAFARI: LA VENGANZA DE MONESVOL");	
                 int yMax, xMax;
                 getmaxyx(stdscr, yMax, xMax);
-                WINDOW * menuwin = newwin(5, xMax-20, yMax-20,5);
+                WINDOW * menuwin = newwin(5, xMax-20, yMax-25,5);
                 box(menuwin, 0, 0);
                 refresh();
                 wrefresh(menuwin);
@@ -90,14 +88,14 @@ void Pastafari::run(){
                         string usuarioTemp(resp);
                         limpiarPantalla();
 
-                        for (int i = 0; i < usuarios.size(); ++i)
+                        for (int i = 0; i <= jugadores.size(); ++i)
                         {
-                                if(usuarios[i]=="qwerty"){
+                                if(adminRaiz.getUsername().compare(resp)==0){
                                         mvprintw(5, 10, "* Ingrese la contraseña del Administrador:");
                                         getstr(resp);
                                         string contraTemp(resp);
                                         limpiarPantalla();
-                                        if(contrasenas[i]=="v"){
+                                        if(adminRaiz.getPassword()==resp){
                                                 bool logout;
                                                 logout=true;
                                                 while(logout==true){
@@ -129,11 +127,7 @@ void Pastafari::run(){
                                                         logout=false;
                                                 }//end respInt 5
                                                 if(resp[0]=='6'){
-
-                                                        juego=false;
-                                                        logout=false;
-                                                        limpiarPantalla();
-                                                        clear();
+                                                        endwin();
                                                         exit(0);
 
 
@@ -146,9 +140,28 @@ void Pastafari::run(){
                                                 }
 
                                         }//end logout
-                                }//end if
-                        }//end for
+                                }//end contra
+                        }//end usuario
+                        else if (jugadores[i]->getUsername()==resp){
+                        	stringstream temporal;
+                        	temporal<<"Ingrese la contraseña de "<<jugadores[i]->getNombre()<<":";
+                        	mvprintw(5, 10, "Ingrese la contraseña de %s",temporal.str());
+                            getstr(resp);
+                            string contraTemp(resp);
+                            limpiarPantalla();
+                        	if(jugadores[i]->getPassword()==resp){
+                        		//usuario raiz
+                        		//Validaciones usuario
+                        	}
+                        }//else if usuario
+                        else{
+                        	limpiarPantalla();
+                        	if(i==jugadores.size())
+                            mvprintw(5, 10, "No existe ese usuario!");
+                        	mvprintw(6, 10, "presione enter para seguir");
+                   	
                         }
+                        }//end for
 
                 }
         }
@@ -165,6 +178,7 @@ void Pastafari::run(){
 
 
 }
+
 
 void Pastafari::limpiarPantalla(){
 	for (int i = 0; i < LINES; i++){
