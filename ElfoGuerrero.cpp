@@ -34,7 +34,7 @@ void ElfoGuerrero::Habilidad1(Personaje* LaMepen ){//s roba dinero y salud al en
 
 	//Habilidad 1 del ladron
 
-	double impacto;
+	  double impacto;
     double saludEnemiga;
     double defensaEnemiga;
     double nuevaSalud;

@@ -7,6 +7,7 @@
 #include "Witcher.h"
 #include <stdlib.h>
 #include <time.h>
+#include <typeinfo>
 
 using namespace std;
 
@@ -58,30 +59,65 @@ void Batalla::BatallaEpica(Personaje* Heroe/*, int i*/){
     for(int i=0; i<Heroe->getAliados().size();i++){//por mientras listaremos hasta 4 hasta que se haga el setAliados
       cout<<"Aliado: "<<i<<" "<<Heroe->getAliado(i)->getNombre()<<endl;
     }
-    cout<<Heroe->getNombre()<<endl;
+    cout<<"Heroe: "<<Heroe->getNombre()<<endl;
     //----------------------------------------------------
 
     //turnos
     if(cont % 2 == 0){
-
-      ataqueEnemigo = rand()%3;
+      if(enemigos.size()==0){
+        ataqueEnemigo=0;
+      }else{
+        ataqueEnemigo = rand()%1+enemigos.size();
+      }
       aliadoAtacado = rand()%Heroe->getAliados().size();
 
       if(ataqueEnemigo == 0){
         enemigos[turnoEnemigo]->Atacar(Heroe->getAliado(aliadoAtacado));
 
       }
-      if(ataqueEnemigo == 1){
-        enemigos[turnoEnemigo]->Habilidad1(Heroe->getAliado(aliadoAtacado));
+      //validar la habilidad segun el personaje
+      Personaje* tem = enemigos[turnoEnemigo];
+      //elfo guerrero
+      if(typeid(*tem)==typeid(ElfoGuerrero)){
+        if(ataqueEnemigo == 1){
+          enemigos[turnoEnemigo]->Habilidad1(Heroe->getAliado(aliadoAtacado));
+        }
+        if(ataqueEnemigo == 2){
+          for(int i = 0;i<enemigos.size();i++){
+            enemigos[turnoEnemigo]->Habilidad2(Heroe->getAliado(i));
+          }
+        }
       }
-      if(ataqueEnemigo == 2){
-        enemigos[turnoEnemigo]->Habilidad2(Heroe->getAliado(aliadoAtacado));
+      //guerrero
+      if(typeid(*tem)==typeid(Guerrero)){
+        if(ataqueEnemigo == 2){
+          enemigos[turnoEnemigo]->Habilidad1(Heroe->getAliado(aliadoAtacado));
+        }
+        if(ataqueEnemigo == 1){
+          for(int i = 0;i<enemigos.size();i++){
+            enemigos[turnoEnemigo]->Habilidad2(Heroe->getAliado(i));
+          }
+        }
       }
-      if(turnoEnemigo > 2){
-        turnoEnemigo = 0;
-      }else{
-        turnoEnemigo++;
+      //witcher
+      if(typeid(*tem)==typeid(Witcher)){
+        if(ataqueEnemigo == 2){
+          enemigos[turnoEnemigo]->Habilidad1(Heroe->getAliado(aliadoAtacado));
+        }
+        if(ataqueEnemigo == 1){
+          for(int i = 0;i<enemigos.size();i++){
+            enemigos[turnoEnemigo]->Habilidad2(Heroe->getAliado(i));
+          }
+        }
       }
+      turnoEnemigo++;
+      if(enemigos.size()==0||turnoEnemigo>2){
+   		turnoEnemigo = 0;
+   		}
+      if(enemigos.size()==2&&turnoEnemigo>1){
+      	turnoEnemigo = 0;
+      }  
+      	
       cout<<Heroe->getAliado(aliadoAtacado)->getVida()<<endl;
     } else{
 
@@ -131,10 +167,12 @@ void Batalla::BatallaEpica(Personaje* Heroe/*, int i*/){
 
 
         double aux=enemigos[opcion2]->getVida();
-        cout<<aux<<endl;
-        if(aux<=0){
-              enemigos.erase(enemigos.begin()+opcion2);
-              cout <<"Ha asesinado al enemigo"<<endl;          
+        
+        if(aux>0){
+        	cout<<aux<<endl;                
+        }else{
+        	enemigos.erase(enemigos.begin()+opcion2);
+            cout <<"Ha asesinado al enemigo"<<endl;
         }
 
       }else if (op==1){
@@ -144,6 +182,7 @@ void Batalla::BatallaEpica(Personaje* Heroe/*, int i*/){
       }
 
     }
+   	
     cont++;
   } 
   
