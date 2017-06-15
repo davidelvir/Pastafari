@@ -5,6 +5,8 @@
 #include "ElfoGuerrero.h"
 #include "Guerrero.h"
 #include "Witcher.h"
+#include <stdlib.h>
+#include <time.h>
 
 using namespace std;
 
@@ -13,7 +15,7 @@ Batalla::Batalla(){
 
 void Batalla::BatallaEpica(Personaje* Heroe/*, int i*/){
 	//Crearemos aqui la batalla y su bitacora!
-
+  srand(time(NULL));
   cout<<"Bienvenido a la Batalla numero "<</*i<<*/endl;
   cout<<endl;
   cout<<"------------------------"<<endl;
@@ -32,6 +34,9 @@ void Batalla::BatallaEpica(Personaje* Heroe/*, int i*/){
 
 
   int cont = 1;
+  int ataqueEnemigo;
+  int aliadoAtacado;
+  int turnoEnemigo=0;
 
   while(enemigos.size()>0&&Heroe->getAliados().size()>0&&Heroe->getVida()>0){//Ocupamos el set aaliados para el size del while
     int opcion=0;
@@ -59,9 +64,25 @@ void Batalla::BatallaEpica(Personaje* Heroe/*, int i*/){
     //turnos
     if(cont % 2 == 0){
 
-      cout<<"Pija"<<endl;
+      ataqueEnemigo = rand()%3;
+      aliadoAtacado = rand()%Heroe->getAliados().size();
 
+      if(ataqueEnemigo == 0){
+        enemigos[turnoEnemigo]->Atacar(Heroe->getAliado(aliadoAtacado));
 
+      }
+      if(ataqueEnemigo == 1){
+        enemigos[turnoEnemigo]->Habilidad1(Heroe->getAliado(aliadoAtacado));
+      }
+      if(ataqueEnemigo == 2){
+        enemigos[turnoEnemigo]->Habilidad2(Heroe->getAliado(aliadoAtacado));
+      }
+      if(turnoEnemigo > 2){
+        turnoEnemigo = 0;
+      }else{
+        turnoEnemigo++;
+      }
+      cout<<Heroe->getAliado(aliadoAtacado)->getVida()<<endl;
     } else{
 
       cout<<"Su turno "<< endl;
