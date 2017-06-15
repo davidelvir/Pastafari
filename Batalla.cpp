@@ -139,9 +139,8 @@ int turnoEnemigo=0;
 
     		cout<<" "<<endl;
 
-    		double aux2=enemigos[opcion2]->getVida();
-    		cout<<aux2<<endl;
-
+    		//double aux2=enemigos[opcion2]->getVida();
+    		//cout<<aux2<<endl;
 
     		Personaje* enemigoAtacado= enemigos[opcion2];
 
@@ -163,7 +162,7 @@ int turnoEnemigo=0;
     			if(attack == 2){
     				Heroe->Habilidad1(enemigos[opcion2]);
     			}
-    			if(ataqueEnemigo == 3){
+    			if(attack == 3){
     				for(int i = 0;i<enemigos.size();i++){
     					Heroe->Habilidad2(enemigos[i]);
     				}
@@ -196,16 +195,88 @@ int turnoEnemigo=0;
     		double aux=enemigos[opcion2]->getVida();
 
     		if(aux>0){
-    			cout<<aux<<endl;                
+    			cout<<"La salud del enemigo que ataco es de: "<<aux<<endl;                
     		}else{
     			enemigos.erase(enemigos.begin()+opcion2);
     			cout <<"Ha asesinado al enemigo"<<endl;
     		}
 
-    	}else if (op==1){
+    	}else if (op==2){
+    		//Atacar con un aliado.
+    		int SeleccionarAliado;
+    		int SeleccionarEnemigo;
+    		cout<<"Seleccione con que Aliado desea atacar: "<<endl;
+    		for(int i=0; i<Heroe->getAliados().size();i++){//por mientras listaremos hasta 4 hasta que se haga el setAliados
+    			cout<<"Aliado: "<<i<<" "<<Heroe->getAliado(i)->getNombre()<<endl;
+    		}
+    		cin>>SeleccionarAliado;
 
-    		cout<<"Pija2"<<endl;
+    		int attack;
 
+    		cout<<"Seleccione a que personaje Enemigo desea atacar"<<endl; 
+    		cin>>SeleccionarEnemigo;
+
+    		cout<<" "<<endl;
+
+    		//double aux2=enemigos[SeleccionarEnemigo]->getVida();
+    		//cout<<aux2<<endl;
+
+    		Personaje* enemigoAtacado= enemigos[SeleccionarEnemigo];
+    		Personaje* AliadoAtaca= Heroe->getAliado(SeleccionarAliado);
+
+    		cout<<"seleccione que habilidad desea utilizar: "<<endl;
+    		cout<<"1-Ataque normal"<<endl;
+    		cout<<"2-habilidad 1"<<endl;
+    		cout<<"3-habilidad 2"<<endl;
+    		cin>>attack;
+
+    		if(attack==1){
+    			AliadoAtaca->Atacar(enemigoAtacado);    
+
+    		}
+
+			if(typeid(*AliadoAtaca)==typeid(ElfoGuerrero)){
+    			if(attack == 2){
+    				AliadoAtaca->Habilidad1(enemigos[SeleccionarEnemigo]);
+    			}
+    			if(attack == 3){
+    				for(int i = 0;i<enemigos.size();i++){
+    					AliadoAtaca->Habilidad2(enemigos[i]);
+    				}
+    			}
+    		}
+      //guerrero
+    		if(typeid(*AliadoAtaca)==typeid(Guerrero)){
+    			if(attack == 3){
+    				AliadoAtaca->Habilidad2(enemigos[SeleccionarEnemigo]);
+    			}
+    			if(attack == 2){
+    				for(int i = 0;i<enemigos.size();i++){
+    					AliadoAtaca->Habilidad1(enemigos[i]);
+    				}
+    			}
+    		}
+      //witcher
+    		if(typeid(*AliadoAtaca)==typeid(Witcher)){
+    			if(attack == 3){
+    				AliadoAtaca->Habilidad2(enemigos[opcion2]);
+    			}
+    			if(attack == 2){
+    				for(int i = 0;i<enemigos.size();i++){
+    					AliadoAtaca->Habilidad1(enemigos[i]);
+    				}
+    			}
+    		}
+
+    		double aux=enemigos[SeleccionarEnemigo]->getVida();
+
+    		if(aux>0){
+    			cout<<"La Salud del enemigo que ataco es de: "<<aux<<endl;                
+    		}else{
+    			enemigos.erase(enemigos.begin()+opcion2);
+    			cout <<"Ha asesinado al enemigo"<<endl;
+    		}    		
+    		
     	}
 
     }
