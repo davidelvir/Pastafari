@@ -11,10 +11,10 @@ using namespace std;
 Batalla::Batalla(){
 }
 
-void Batalla::BatallaEpica(Personaje* Heroe){
+void Batalla::BatallaEpica(Personaje* Heroe/*, int i*/){
 	//Crearemos aqui la batalla y su bitacora!
 
-  cout<<"Bienvenido a la Batalla numero 1"<<endl;
+  cout<<"Bienvenido a la Batalla numero "<</*i<<*/endl;
   cout<<endl;
   cout<<"------------------------"<<endl;
   
@@ -37,6 +37,7 @@ void Batalla::BatallaEpica(Personaje* Heroe){
     int opcion=0;
     int opcion2=0;
     int op=0;
+
     cout<<"Estos son los enemigos a derrotar: "<<endl;
     cout<<"----------------------------"<<endl;  
     //
@@ -46,6 +47,7 @@ void Batalla::BatallaEpica(Personaje* Heroe){
     }
 
     cout<<"----------------------------------"<<endl;
+    
     cout<<"Estos son sus Personajes: "<<endl;
 
     for(int i=0; i<Heroe->getAliados().size();i++){//por mientras listaremos hasta 4 hasta que se haga el setAliados
@@ -57,13 +59,7 @@ void Batalla::BatallaEpica(Personaje* Heroe){
     //turnos
     if(cont % 2 == 0){
 
-      cout<<"Turno del Enemigo" <<endl;
-
-      cout<<"Seleccione con que personaje desea atacar"<<endl; 
-      cin>>opcion;
-      cout<<"Seleccione a que personaje desea atacar"<<endl; 
-      cin>>opcion2;
-
+      cout<<"Pija"<<endl;
 
 
     } else{
@@ -79,17 +75,40 @@ void Batalla::BatallaEpica(Personaje* Heroe){
         double defensaEnemiga;
         double nuevaSalud;
 
+        int attack;
+
         cout<<"Seleccione a que personaje desea atacar"<<endl; 
         cin>>opcion2;
 
+        cout<<" "<<endl;
 
+        double aux2=enemigos[opcion2]->getVida();
+        cout<<aux2<<endl;
         
-        saludEnemiga= enemigos[opcion2]->getVida();
-        defensaEnemiga= enemigos[opcion2]->getDefensa();
-        impacto = Heroe->getAtaque()-(defensaEnemiga/2);
-        nuevaSalud= saludEnemiga-impacto;
 
-        enemigos[opcion2]->setVida(nuevaSalud);
+        Personaje* enemigoAtacado= enemigos[opcion2];
+
+
+        cout<<"seleccione que habilidad desea utilizar: "<<endl;
+        cout<<"1-Ataque normal"<<endl;
+        cout<<"2-habilidad 1"<<endl;
+        cout<<"3-habilidad 2"<<endl;
+        cin>>attack;
+
+        if(attack==1){
+          Heroe->Atacar(enemigoAtacado);    
+
+        } 
+        if(attack==2){
+          Heroe->Habilidad1(enemigoAtacado);
+
+        }
+        if(attack==3){
+          Heroe->Habilidad2(enemigoAtacado);
+
+        }
+
+
         double aux=enemigos[opcion2]->getVida();
         cout<<aux<<endl;
         if(aux<=0){
@@ -97,12 +116,9 @@ void Batalla::BatallaEpica(Personaje* Heroe){
               cout <<"Ha asesinado al enemigo"<<endl;          
         }
 
-      }else{
+      }else if (op==1){
 
-        cout<<"Seleccione con que personaje desea atacar"<<endl; 
-        cin>>opcion;
-        cout<<"Seleccione a que personaje desea atacar"<<endl; 
-        cin>>opcion2;
+        cout<<"Pija2"<<endl;
 
       }
 
