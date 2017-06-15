@@ -29,6 +29,7 @@
 #include "Persona.h"
 #include "Personaje.h"
 #include "Witcher.h"
+#include "stdlib.h"
 #include <vector>
 
 #ifndef PASTAFARI_H
@@ -39,6 +40,9 @@ using namespace std;
 class Pastafari{
 	private:
 		Jugador* jugadorRaiz;
+		Jugador* jugadorTemp;
+		Jugador* jugadorTemp2;
+		Jugador* cualquiera;
 		Administrador* adminRaiz;
 		vector<Jugador*> jugadores;
 		
@@ -47,6 +51,7 @@ class Pastafari{
 		void run();
 		void limpiarPantalla();
 		void historia();
+		Jugador* agregarJugador(vector<Jugador*> jugadores);
 
 
 };
