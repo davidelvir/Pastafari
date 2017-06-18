@@ -11,8 +11,8 @@ class ElfoSanador : public Elfo{
    virtual void Habilidad1(Personaje*);
    virtual void Comprar(double)=0;
    
-   virtual void CortarPelo(double)=0;
-   virtual void ArmaEspecial(Personaje*,Personaje*)=0;
+   virtual void CortarPelo(double);
+   virtual void ArmaEspecial(Personaje*,Personaje*);
 
 };
 
