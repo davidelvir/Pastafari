@@ -13,7 +13,7 @@ class Batalla{
         
         Batalla();
 
-        void BatallaEpica(Personaje*);//el vector es de los enemigos, y el personaje es el principal que contiene su vector de aliados
+        void BatallaEpica(Personaje*, vector<Personaje*>, int);//el vector es de los enemigos, y el personaje es el principal que contiene su vector de aliados
 
 
 

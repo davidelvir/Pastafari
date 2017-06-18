@@ -31,6 +31,8 @@
 #include "Witcher.h"
 #include "stdlib.h"
 #include <vector>
+#include <stdio.h>
+#include <string.h>
 
 #ifndef PASTAFARI_H
 #define PASTAFARI_H
@@ -53,7 +55,9 @@ class Pastafari{
 		void historia();
 		int menuJugador();
 		int menu();
+		int menuPersonaje();
 		Jugador* agregarJugador(vector<Jugador*> jugadores);
+		void listarJugadores(vector<Jugador*>);
 
 
 };

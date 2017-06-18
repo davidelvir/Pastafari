@@ -8,31 +8,25 @@
 #include <stdlib.h>
 #include <time.h>
 #include <typeinfo>
+#include <ncurses.h>
+#include <stdio.h>
+#include <string.h>
+
 
 using namespace std;
 
 Batalla::Batalla(){
 }
 
-void Batalla::BatallaEpica(Personaje* Heroe/*, int i*/){
-	//Crearemos aqui la batalla y su bitacora!
+void Batalla::BatallaEpica(Personaje* Heroe, vector<Personaje*> enemigos,int m){
+//Crearemos aqui la batalla y su bitacora!
 srand(time(NULL));
-  cout<<"Bienvenido a la Batalla numero "<</*i<<*/endl;
-cout<<endl;
-cout<<"------------------------"<<endl;
-
-Personaje* enemigo1 = new ElfoGuerrero();
-Personaje* enemigo2 = new Guerrero();
-Personaje* enemigo3 = new Witcher();
-
-enemigo1->setNombre("Jahaziel");
-enemigo2->setNombre("Marvin");
-enemigo3->setNombre("Juan");
-
-enemigos.push_back(enemigo1);
-enemigos.push_back(enemigo2);
-enemigos.push_back(enemigo3);
-
+int acum=1;
+clear();
+acum++;
+mvprintw(acum, 10, "Bienvenido a la Batalla numero %i",m);
+acum++;
+mvprintw(acum, 10, "--------------------------------");
 
 int cont = 1;
 int ataqueEnemigo;
@@ -42,25 +36,43 @@ int turnoEnemigo=0;
   while(enemigos.size()>0&&Heroe->getAliados().size()>0&&Heroe->getVida()>0){//Ocupamos el set aaliados para el size del while
   	int opcion=0;
   	int opcion2=0;
+    char resp[100];
   	int op=0;
-
-  	cout<<"Estos son los enemigos a derrotar: "<<endl;
-  	cout<<"----------------------------"<<endl;  
+    acum=acum+2;
+  	mvprintw(acum, 10, "Estos son los enemigos a derrotar");
+    acum++;
+  	mvprintw(acum, 10, "---------------------------------");
+    acum++;
     //
     //Listar
   	for(int i=0; i<enemigos.size();i++){
-  		cout<<"Enemigo: "<<i<<" "<<enemigos[i]->getNombre()<<endl;
+  		acum+=i;
+        string nombre = enemigos[i]->getNombre();
+                    char *cstr = new char[nombre.length() + 1];
+                    strcpy(cstr, nombre.c_str());
+        mvprintw(acum, 10, "Enemigo: %i-) %c",i,cstr);
+        delete [] cstr;
   	}
-
-  	cout<<"----------------------------------"<<endl;
-
-  	cout<<"Estos son sus Personajes: "<<endl;
-
+    acum++;
+  	mvprintw(acum, 10, "---------------------------------");
+    acum++;
+    mvprintw(acum, 10, "Estos son sus personajes: ");
+    
     for(int i=0; i<Heroe->getAliados().size();i++){//por mientras listaremos hasta 4 hasta que se haga el setAliados
-    	cout<<"Aliado: "<<i<<" "<<Heroe->getAliado(i)->getNombre()<<endl;
+        acum+=i;
+        string nombre = Heroe->getAliado(i)->getNombre();
+                    char *cstr = new char[nombre.length() + 1];
+                    strcpy(cstr, nombre.c_str());
+        mvprintw(acum, 10, "Aliado: %i-) %c",i,cstr);
+        delete [] cstr;
     }
-    cout<<"Heroe: "<<Heroe->getNombre()<<endl;
-    //----------------------------------------------------
+
+    acum++;
+    string nombre1 = Heroe->getNombre();
+                    char *cstr1 = new char[nombre1.length() + 1];
+                    strcpy(cstr1, nombre1.c_str());
+        mvprintw(acum, 10, "Heroe: %c",cstr1);
+        delete [] cstr1;
 
     //turnos
     if(cont % 2 == 0){
@@ -118,14 +130,42 @@ int turnoEnemigo=0;
     		turnoEnemigo = 0;
     	}  
 
-    	cout<<Heroe->getAliado(aliadoAtacado)->getVida()<<endl;
+        string nombre=Heroe->getAliado(aliadoAtacado)->getNombre();
+        double vida=Heroe->getAliado(aliadoAtacado)->getVida();
+        
+        char *cstr = new char[nombre.length() + 1];
+        strcpy(cstr, nombre.c_str());
+        
+        string nombreHeroe=Heroe->getNombre();
+        double vidaHeroe=Heroe->getVida();
+
+        char *cstr2 = new char[nombreHeroe.length() + 1];
+        strcpy(cstr2, nombreHeroe.c_str());
+        
+        acum++;
+        mvprintw(acum, 10, "Ha atacado el enemigo, Reporte de Daños: ");
+        acum++;
+        mvprintw(acum, 10, "La salud del Aliado  %c es: %d",cstr,vida);
+        acum++;
+        mvprintw(acum, 10, "La salud del Heroe  %c es: %d",cstr2,vidaHeroe);
+        acum++;
+        mvprintw(acum, 10, "Toque enter para continuar");
+        getstr(resp);
+        delete [] cstr;
+        delete [] cstr2;
+        acum =1;
+        clear();
     } else{
+        acum++;
+        mvprintw(acum, 10, "Su turno: ");
+        acum++;
+        mvprintw(acum, 10, "1-Atacar con Heroe principal");
+        acum++;
+        mvprintw(acum, 10, "2-Atacar con Aliado");
+    	getstr(resp);
+        string temp(resp);
+        op = atoi(temp.c_str());
 
-    	cout<<"Su turno "<< endl;
-
-    	cout<<"1-Atacar con Heroe principal"<<endl;
-    	cout<<"2-Atacar con Aliado"<<endl;
-    	cin>>op;
     	if(op==1){
     		double impacto;
     		double saludEnemiga;
@@ -134,22 +174,30 @@ int turnoEnemigo=0;
 
     		int attack;
 
-    		cout<<"Seleccione a que personaje desea atacar"<<endl; 
-    		cin>>opcion2;
-
-    		cout<<" "<<endl;
+    		acum++;
+            mvprintw(acum, 10, "Seleccione a que enemigo desea Atacar: ");
+            getstr(resp);
+            string temp1(resp);
+            opcion2 = atoi(temp1.c_str());
+            acum++;
 
     		//double aux2=enemigos[opcion2]->getVida();
     		//cout<<aux2<<endl;
 
     		Personaje* enemigoAtacado= enemigos[opcion2];
 
-
-    		cout<<"seleccione que habilidad desea utilizar: "<<endl;
-    		cout<<"1-Ataque normal"<<endl;
-    		cout<<"2-habilidad 1"<<endl;
-    		cout<<"3-habilidad 2"<<endl;
-    		cin>>attack;
+            acum++;
+            mvprintw(acum, 10, "Seleccione que habilidad desea usar: ");
+            acum++;
+            mvprintw(acum, 10, "1-Ataque Normal");
+            acum++;
+            mvprintw(acum, 10, "2-Hablidad 1");
+    		acum++;
+            mvprintw(acum, 10, "3-Hablidad 2");
+            getstr(resp);
+            string temp2(resp);
+            attack=atoi(temp2.c_str());
+            
 
     		if(attack==1){
     			Heroe->Atacar(enemigoAtacado);    
@@ -195,28 +243,44 @@ int turnoEnemigo=0;
     		double aux=enemigos[opcion2]->getVida();
 
     		if(aux>0){
-    			cout<<"La salud del enemigo que ataco es de: "<<aux<<endl;                
+                acum++;
+                mvprintw(acum, 10, "La salud del enemigo que ataco es de: %d",aux);               
     		}else{
     			enemigos.erase(enemigos.begin()+opcion2);
-    			cout <<"Ha asesinado al enemigo"<<endl;
+                acum++;
+                mvprintw(acum, 10, "Ha asesinado al enemigo!");
     		}
+
+            acum =1;
+            clear();
 
     	}else if (op==2){
     		//Atacar con un aliado.
     		int SeleccionarAliado;
     		int SeleccionarEnemigo;
-    		cout<<"Seleccione con que Aliado desea atacar: "<<endl;
+            acum++;
+            mvprintw(acum, 10, "Seleccione con que Aliado desea atacar: ");
+    	    acum++;
+            acum++;
     		for(int i=0; i<Heroe->getAliados().size();i++){//por mientras listaremos hasta 4 hasta que se haga el setAliados
-    			cout<<"Aliado: "<<i<<" "<<Heroe->getAliado(i)->getNombre()<<endl;
+    			acum+=i;
+                string temporal=Heroe->getAliado(i)->getNombre();
+                char *ctrse = new char[temporal.length() + 1];
+                strcpy(ctrse, temporal.c_str());
+                mvprintw(acum, 10, "Aliado: %i.) %c ",i,ctrse);
+                delete [] ctrse;
     		}
-    		cin>>SeleccionarAliado;
+            getstr(resp);
+            string cualqu(resp);
+    		SeleccionarAliado=atoi(cualqu.c_str());
 
     		int attack;
 
-    		cout<<"Seleccione a que personaje Enemigo desea atacar"<<endl; 
-    		cin>>SeleccionarEnemigo;
-
-    		cout<<" "<<endl;
+    		acum++;
+    		mvprintw(acum, 10, "Seleccione a que personaje Enemigo desea atacar: ");
+            getstr(resp);
+            string cualqui(resp);
+            SeleccionarEnemigo=atoi(cualqui.c_str());
 
     		//double aux2=enemigos[SeleccionarEnemigo]->getVida();
     		//cout<<aux2<<endl;
@@ -224,12 +288,19 @@ int turnoEnemigo=0;
     		Personaje* enemigoAtacado= enemigos[SeleccionarEnemigo];
     		Personaje* AliadoAtaca= Heroe->getAliado(SeleccionarAliado);
 
-    		cout<<"seleccione que habilidad desea utilizar: "<<endl;
-    		cout<<"1-Ataque normal"<<endl;
-    		cout<<"2-habilidad 1"<<endl;
-    		cout<<"3-habilidad 2"<<endl;
-    		cin>>attack;
 
+            acum++;
+            mvprintw(acum, 10, "Seleccione que habilidad desea utilizar: ");
+            acum++;
+            mvprintw(acum, 10, "1-Ataque normal");
+            acum++;
+            mvprintw(acum, 10, "2-habilidad 1");
+            acum++;
+            mvprintw(acum, 10, "3-habilidad 2");
+            getstr(resp);
+            string cualquie(resp);
+            attack=atoi(cualquie.c_str());
+            acum++;
     		if(attack==1){
     			AliadoAtaca->Atacar(enemigoAtacado);    
 
@@ -271,12 +342,18 @@ int turnoEnemigo=0;
     		double aux=enemigos[SeleccionarEnemigo]->getVida();
 
     		if(aux>0){
-    			cout<<"La Salud del enemigo que ataco es de: "<<aux<<endl;                
+                acum++;
+                mvprintw(acum, 10, "La Salud del enemigo que ataco es de: %d",aux);
+    			               
     		}else{
     			enemigos.erase(enemigos.begin()+opcion2);
-    			cout <<"Ha asesinado al enemigo"<<endl;
+                acum++;
+                mvprintw(acum, 10, "Ha asesinado al enemigo");
+    			
     		}    		
     		
+            acum=1;
+            clear();
     	}
 
     }
@@ -284,6 +361,6 @@ int turnoEnemigo=0;
     cont++;
 } 
 
-cout<<"La batalla a terminado"<<endl;
-
+acum++;
+mvprintw(acum, 10, "La batalla ha terminado");
 }
