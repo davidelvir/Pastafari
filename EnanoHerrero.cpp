@@ -66,3 +66,9 @@ void EnanoHerrero::Habilidad2(Personaje* aliado){//Da habilidad de ataque +30 a 
  	aliado->setAtaque(aux);
 
 }
+void EnanoHerrero::Comprar(double dinero){}
+        
+void EnanoHerrero::CortarPelo(double dinero){}
+
+
+void EnanoHerrero::ArmaEspecial(Personaje* tem,Personaje* tem2){}

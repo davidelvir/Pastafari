@@ -80,10 +80,10 @@ public:
 	virtual void Habilidad2(Personaje*)=0;
 	virtual void Habilidad1(Personaje*)=0;
 
-	/*virtual void Comprar(double)=0;
+	virtual void Comprar(double)=0;
 	.
 	virtual void CortarPelo(double)=0;
-	virtual void ArmaEspecial(Personaje*,Personaje*)=0;*/
+	virtual void ArmaEspecial(Personaje*,Personaje*)=0;
 
 	friend istream& operator >> (istream& in, Personaje& personaje){
 		char buffer[256];
