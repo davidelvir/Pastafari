@@ -92,3 +92,10 @@ void EnanoGuerrero::Habilidad2(Personaje* enemigo){//El golpe tiene probabilidad
 
 }
 
+void EnanoGuerrero::Comprar(double dinero){}
+        
+void EnanoGuerrero::CortarPelo(double dinero){}
+
+
+void EnanoGuerrero::ArmaEspecial(Personaje* tem,Personaje* tem2){}
+

@@ -24,14 +24,28 @@
 #include <string>
 #include <iostream>
 #include <stdlib.h>
+#include <fstream>
+#include <sstream>
 using namespace std;
+
+void guardarJugadorTXT(Jugador* p);
+vector<Jugador*> cargarJugador(vector<Jugador*>);
 
 int main(){
 
+  vector <Jugador*> jugadores;
+
+  ifstream file("Jugador.txt");
+
+  if(file.is_open()){
+    
+      
+  } 
+  
 	vector <Batalla*> batallas;
   
   Personaje* Heroe = new Witcher();
- 
+
   Heroe->setNombre("Alexi");
 
   Personaje* A1 = new Witcher();
@@ -44,12 +58,43 @@ int main(){
   Heroe->setAliado(A2);
 	Batalla* temp = new Batalla();
 
-  temp->BatallaEpica(Heroe);
-
-	cout <<"HOLA";
-
-	
-
-
+  //temp->BatallaEpica(Heroe);
+  
+  
 return 0;	
 }
+
+void guardarJugadorTXT(Jugador* p){
+  ofstream archivo;
+  string ruta="Nombres.txt";
+  stringstream ss;
+  ss<<"Jugador.txt";   
+
+  ruta=ss.str();
+  archivo.open(ruta.c_str(),ios::app);
+  
+  archivo<<p->getNombre()<<endl<<p->getUsername()<<endl<< p->getPassword()<<endl<<p->getEdad()<<endl<<p->getCarrera()<<endl;
+  archivo<<p->getPersonaje()->getNombre()<<endl;
+  archivo<<p->getPersonaje()->getVida()<<endl;
+  archivo<<p->getPersonaje()->getDefensa()<<endl;
+  archivo<<p->getPersonaje()->getAtaque()<<endl;
+  archivo<<p->getPersonaje()->getReputacion()<<endl;
+  archivo<<p->getPersonaje()->getNivel()<<endl;
+  archivo<<p->getPersonaje()->getExperiencia()<<endl;
+  archivo<<p->getPersonaje()->getBolas()<<endl;
+  archivo<<p->getPersonaje()->getReputacion()<<endl;
+  archivo<<p->getPersonaje()->getEstiloCabello()<<endl;
+  archivo<<p->getPersonaje()->getDinero()<<endl;
+  
+  archivo.close();
+    
+}
+
+vector<Jugador*> cargarJugador(vector<Jugador*> jugadores){
+    for (int i = 0; i < jugadores.size(); ++i){
+        file>>*jugadores[i];
+    }
+
+    return jugadores;
+}
+

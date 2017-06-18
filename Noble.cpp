@@ -28,3 +28,10 @@ void Noble::Habilidad1(Personaje* aliado){
 void Noble::Habilidad2(Personaje* aliado){
   Vida += Vida*0.8;
 }
+
+void Noble::Comprar(double dinero){}
+        
+void Noble::CortarPelo(double dinero){}
+
+
+void Noble::ArmaEspecial(Personaje* tem,Personaje* tem2){}

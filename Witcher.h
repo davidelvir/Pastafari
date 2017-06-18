@@ -9,16 +9,20 @@ using namespace std;
 
 class Witcher:public Humano{
 
-    protected:
+protected:
 
 
-    public:
-        
-    	Witcher(string, double,double,double,string,int,int,int,string, string, double);
-        Witcher();
-        virtual void Atacar(Personaje*);
-        virtual void Habilidad1(Personaje*);
-        virtual void Habilidad2(Personaje*);
+public:
+
+	Witcher(string, double,double,double,string,int,int,int,string, string, double);
+	Witcher();
+	virtual void Atacar(Personaje*);
+	virtual void Habilidad1(Personaje*);
+	virtual void Habilidad2(Personaje*);
+	virtual void Comprar(double);
+	
+	virtual void CortarPelo(double);
+	virtual void ArmaEspecial(Personaje*,Personaje*);
 };
 #endif
 //Witcher 4?
