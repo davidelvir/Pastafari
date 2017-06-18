@@ -39,8 +39,9 @@ class Jugador: public Persona{
 			char buffer4[256];
 			in.getline(buffer4, 256);
 			jugador.Carrera = buffer4;
-			
-			
+
+			in >> jugador.personaje;
+
 			return in;
 		}
 
