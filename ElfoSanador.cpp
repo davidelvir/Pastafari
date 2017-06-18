@@ -57,9 +57,9 @@ void ElfoSanador::Habilidad2(Personaje* aliado){
 
 }
 
-/*void ElfoSanador::Comprar(double dinero){};
+void ElfoSanador::Comprar(double dinero){};
         .
 void ElfoSanador::CortarPelo(double dinero){};
 
 
-void ElfoSanador::ArmaEspecial(Personaje* tem,Personaje* tem2){};*/
+void ElfoSanador::ArmaEspecial(Personaje* tem,Personaje* tem2){};
