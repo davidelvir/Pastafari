@@ -17,5 +17,32 @@ class Jugador: public Persona{
         Jugador();
 		Personaje* getPersonaje();
 		void setPersonaje(Personaje*);
+
+		friend istream& operator >> (istream& in, Jugador& jugador){
+			char buffer[256];
+			in.getline(buffer, 256);
+			jugador.Nombre = buffer;
+			
+			char buffer2[256];
+			in.getline(buffer2, 256);
+			jugador.Username = buffer2;
+			
+
+			char buffer3[256];
+			in.getline(buffer3, 256);
+			jugador.Password = buffer3;
+			
+			in >> jugador.Edad;
+
+			in.ignore(1, '\n');
+			
+			char buffer4[256];
+			in.getline(buffer4, 256);
+			jugador.Carrera = buffer4;
+			
+			
+			return in;
+		}
+
 };
 #endif
