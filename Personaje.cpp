@@ -9,16 +9,16 @@ using namespace std;
 Personaje::Personaje(string Nombre, double Vida, double Defensa, double Ataque,string Reputacion,int Nivel,int Experiencia,int Bolas,string estiloCabello,double Dinero){
 
 	this->Nombre=Nombre;
-    this->Vida=Vida;
-    this->Defensa=Defensa;
-    this->Ataque=Ataque;
-    this->Reputacion=Reputacion;
+	this->Vida=Vida;
+	this->Defensa=Defensa;
+	this->Ataque=Ataque;
+	this->Reputacion=Reputacion;
 	this->Nivel=Nivel;
-    this->Experiencia=Experiencia;
-    this->Bolas=Bolas;
-    this->estiloCabello=estiloCabello;
-    this->Stamina=true;
-    this->Dinero=Dinero;
+	this->Experiencia=Experiencia;
+	this->Bolas=Bolas;
+	this->estiloCabello=estiloCabello;
+	this->Stamina=true;
+	this->Dinero=Dinero;
 }
 
 Personaje::Personaje(){
@@ -37,13 +37,13 @@ void Personaje:: setAliado(Personaje* aliado){
 }
 
 vector<Personaje*>& Personaje::getAliados(){
-  return Aliados;
+	return Aliados;
 }
 double Personaje::getDinero(){
-  return Dinero;
+	return Dinero;
 }
 void Personaje::setDinero(double pDinero){
-  Dinero = pDinero;
+	Dinero = pDinero;
 }
 
 string Personaje::getNombre(){
@@ -89,9 +89,18 @@ void Personaje::setNivel(int pNivel){
 }
 
 bool Personaje::getStamina(){
-  return Stamina;
+	return Stamina;
 }
 
 void Personaje::setStamina(bool pStamina){
-  Stamina = pStamina;
+	Stamina = pStamina;
 }
+
+int Personaje::getExp(){return Experiencia;}
+void Personaje::setExp(int exp){Experiencia = exp;}
+
+string Personaje::getEstiloCabello(){return estiloCabello;}
+void Personaje::setEstiloCabello(string estilo){estiloCabello = estilo;}
+
+int Personaje::getBolas(){return Bolas;}
+void Personaje::setBolas(int bolas){Bolas = bolas;}

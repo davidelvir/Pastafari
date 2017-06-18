@@ -10,110 +10,119 @@ using namespace std;
 #define PERSONAJE_H
 
 class Personaje{
-    protected:
-        string Nombre;
-        double Vida;
-        double Defensa;
-        double Ataque;
-        string Reputacion;
-        int Nivel;
-        int Experiencia;
-        vector<Item*>Bolsa;
-        int Bolas;
-        vector<Personaje*>Aliados;
-        vector<Bestia*>Bestias;
-        Item Armadura;
-        Item Arma;
-        bool Stamina;
-        string estiloCabello;
-        double Dinero;
+protected:
+	string Nombre;
+	double Vida;
+	double Defensa;
+	double Ataque;
+	string Reputacion;
+	int Nivel;
+	int Experiencia;
+	vector<Item*>Bolsa;
+	int Bolas;
+	vector<Personaje*>Aliados;
+	vector<Bestia*>Bestias;
+	Item Armadura;
+	Item Arma;
+	bool Stamina;
+	string estiloCabello;
+	double Dinero;
 
-    public:
-        
-        Personaje(string, double,double,double,string,int,int,int,string,double);
-        Personaje();
+public:
+
+	Personaje(string, double,double,double,string,int,int,int,string,double);
+	Personaje();
 
         //Set y Get de Aliados;
 
-        Personaje* getAliado(int);
+	Personaje* getAliado(int);
 
-        vector<Personaje*>& getAliados();
+	vector<Personaje*>& getAliados();
 
-        void setAliado(Personaje*);
+	void setAliado(Personaje*);
 
         //_________________________________
 
-	   bool getStamina();
-	   void setStamina(bool);
+	bool getStamina();
+	void setStamina(bool);
 
-        double getDinero();
-        void setDinero(double);
+	int getExp();
+	void setExp(int);
 
-        string getNombre();
-        void setNombre(string);
+	string getEstiloCabello();
+	void setEstiloCabello(string);
 
-        double getVida();
-        void setVida(double);
+	int getBolas();
+	void setBolas();
 
-        double getDefensa();
-        void setDefensa(double);
+	double getDinero();
+	void setDinero(double);
 
-        double getAtaque();
-        void setAtaque(double);
+	string getNombre();
+	void setNombre(string);
 
-        string getReputacion();
-        void setReputacion(string);
+	double getVida();
+	void setVida(double);
 
-        int getNivel();
-        void setNivel(int);
+	double getDefensa();
+	void setDefensa(double);
 
-        virtual void Atacar(Personaje*)=0;
-        virtual void Habilidad2(Personaje*)=0;
-        virtual void Habilidad1(Personaje*)=0;
+	double getAtaque();
+	void setAtaque(double);
 
-        /*virtual void Comprar(double)=0;
-        .
-        virtual void CortarPelo(double)=0;
-        virtual void ArmaEspecial(Personaje*,Personaje*)=0;*/
-        
-        friend istream& operator >> (istream& in, Personaje& personaje){
-            char buffer[256];
-            in.getline(buffer, 256);
-            personaje.Nombre = buffer;
-            
-            in >> personaje.Vida;
-            in.ignore(1, '\n');
+	string getReputacion();
+	void setReputacion(string);
 
-            in >> personaje.Defensa;
-            in.ignore(1, '\n');
-            
-            in >> personaje.Ataque;
-            in.ignore(1, '\n');
-            
+	int getNivel();
+	void setNivel(int);
 
-            char buffer2[256];
-            in.getline(buffer2, 256);
-            personaje.Reputacion = buffer2;
-            
-            in >> personaje.Nivel;
-            in.ignore(1, '\n');
-            
-            in >> personaje.Experiencia;
-            in.ignore(1, '\n');
+	virtual void Atacar(Personaje*)=0;
+	virtual void Habilidad2(Personaje*)=0;
+	virtual void Habilidad1(Personaje*)=0;
 
-            in >> personaje.Bolas;
-            in.ignore(1, '\n');
+	/*virtual void Comprar(double)=0;
+	.
+	virtual void CortarPelo(double)=0;
+	virtual void ArmaEspecial(Personaje*,Personaje*)=0;*/
 
-            char buffer3[256];
-            in.getline(buffer3, 256);
-            personaje.estiloCabello = buffer3;
+	friend istream& operator >> (istream& in, Personaje& personaje){
+		char buffer[256];
+		in.getline(buffer, 256);
+		personaje.Nombre = buffer;
+
+		in >> personaje.Vida;
+		in.ignore(1, '\n');
+
+		in >> personaje.Defensa;
+		in.ignore(1, '\n');
+
+		in >> personaje.Ataque;
+		in.ignore(1, '\n');
 
 
-            in >> personaje.Dinero;
-            in.ignore(1, '\n');
-                
-            return in;
-        }   
+		char buffer2[256];
+		in.getline(buffer2, 256);
+		personaje.Reputacion = buffer2;
+
+		in >> personaje.Nivel;
+		in.ignore(1, '\n');
+
+		in >> personaje.Experiencia;
+		in.ignore(1, '\n');
+
+		in >> personaje.Bolas;
+		in.ignore(1, '\n');
+
+		char buffer3[256];
+		in.getline(buffer3, 256);
+		personaje.estiloCabello = buffer3;
+
+
+		in >> personaje.Dinero;
+		in.ignore(1, '\n');
+
+		return in;
+	}   
 
 };
 #endif

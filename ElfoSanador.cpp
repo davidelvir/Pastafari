@@ -56,3 +56,10 @@ void ElfoSanador::Habilidad2(Personaje* aliado){
     aliado->setDefensa(defensaAliado);
 
 }
+
+/*void ElfoSanador::Comprar(double dinero){};
+        .
+void ElfoSanador::CortarPelo(double dinero){};
+
+
+void ElfoSanador::ArmaEspecial(Personaje* tem,Personaje* tem2){};*/
