@@ -51,6 +51,8 @@ class Pastafari{
 		void run();
 		void limpiarPantalla();
 		void historia();
+		int menuJugador();
+		int menu();
 		Jugador* agregarJugador(vector<Jugador*> jugadores);
 
 

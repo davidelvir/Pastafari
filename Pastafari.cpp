@@ -12,62 +12,18 @@ void Pastafari::run(){
         Jugador* cualquiera=new Jugador("Alessandro", "QWERTY","v",20,"Ing en Sistemas");
         jugadores.push_back(cualquiera);
         bool juego = true;
+        int opcionMenu;
  		string menuPrincipal;
         menuPrincipal="s";
 
         while(menuPrincipal=="s"||menuPrincipal=="S"){
-                initscr();                      /* Start curses mode              */
+                initscr();                      /* Start curses mode */
                 start_color();
                 refresh();
-
-        init_pair(1, COLOR_GREEN, COLOR_BLACK );
-        bkgd( COLOR_PAIR(1) );
-                noecho();
-                cbreak();
-                mvprintw(2, 10, "PASTAFARI: LA VENGANZA DE MONESVOL");	
-                int yMax, xMax;
-                getmaxyx(stdscr, yMax, xMax);
-                WINDOW * menuwin = newwin(5, xMax-20, yMax-20,5);
-                box(menuwin, 0, 0);
-                refresh();
-                wrefresh(menuwin);
-                keypad(menuwin, true);
-                string choices[3]={"LOGIN","Crear cuenta", "Salir"};
-                int choice;
-                int highlight = 0;
-
-        while(1)
-        {
-                for(int i = 0; i < 3; i++)
-                {
-                        if(i == highlight)
-                                wattron(menuwin,A_REVERSE);
-                        mvwprintw(menuwin,i+1,1,choices[i].c_str());
-                        wattroff(menuwin, A_REVERSE);
-                }
-                choice = wgetch(menuwin);
-
-                switch(choice)
-                {
-                        case KEY_UP:
-                                highlight--;
-                                if(highlight == -1)
-                                        highlight=0;
-                                break;
-                        case KEY_DOWN:
-                                highlight++;
-                                if(highlight == 3)
-                                	highlight = 2;
-                                break;
-                                default:
-                                break;
-                }
-                if(choice==10)
-                        break;
-        }
-        endwin();
+                opcionMenu =  menu();
+        
         //printw("Your choice was: %s", choices[highlight].c_str());
-        if(choices[highlight]=="Crear cuenta")
+        if(opcionMenu == 1)
         {
         	    refresh();
         	    echo();
@@ -81,13 +37,13 @@ void Pastafari::run(){
                 mvprintw(3, 10, "Presione enter para continuar...");
                 getstr(resp);
                 clear();
-                choices[highlight]=="LOGIN";
+
                    
-        }else if(choices[highlight]=="Salir"){
+        }else if(opcionMenu == 2){
                 exit(0);
 
         }
-        if(choices[highlight]=="LOGIN"){
+        if(opcionMenu == 0){
 
                 start_color();
                 echo();
@@ -182,8 +138,17 @@ void Pastafari::run(){
                         		//usuario raiz
                         		initscr();
                         		clear();
-                        		mvprintw(5, 10, "Chupala Jahaziel .|. 8) ");
-                        		getstr(resp);
+                        		int menuJugadorTemp;
+                                menuJugadorTemp=menuJugador();
+                                    if(menuJugadorTemp==0){
+                                        //Comenzar historia
+                                    }
+                                    if(menuJugadorTemp==1){
+                                        //About
+                                    }
+                                    if(menuJugadorTemp==2){
+                                        juego=false;
+                                    }
                         		clear();
                         	}
                         }//else if usuario
@@ -225,6 +190,7 @@ void Pastafari::historia(){
 		string historia;
         limpiarPantalla();
 }
+
 Pastafari::Pastafari(){
 
 }
@@ -351,4 +317,108 @@ Jugador* Pastafari:: agregarJugador(vector<Jugador*> jugadores){
         Jugador* temp;
     temp = new Jugador(nombre, t, contra, numEdad, carrera);
 	return temp;
+}
+
+int Pastafari :: menu(){
+    int temp;
+    init_pair(1, COLOR_GREEN, COLOR_BLACK );
+        bkgd( COLOR_PAIR(1) );
+                noecho();
+                cbreak();
+                mvprintw(2, 10, "PASTAFARI: LA VENGANZA DE MONESVOL");  
+                int yMax, xMax;
+                getmaxyx(stdscr, yMax, xMax);
+                WINDOW * menuwin = newwin(5, xMax-20, yMax-20,2);
+                box(menuwin, 0, 0);
+                refresh();
+                wrefresh(menuwin);
+                keypad(menuwin, true);
+                string choices[3]={"LOGIN","Crear cuenta", "Salir"};
+                int choice;
+                int highlight = 0;
+
+        while(1)
+        {
+                for(int i = 0; i < 3; i++)
+                {
+                        if(i == highlight)
+                                wattron(menuwin,A_REVERSE);
+                        mvwprintw(menuwin,i+1,1,choices[i].c_str());
+                        wattroff(menuwin, A_REVERSE);
+                }
+                choice = wgetch(menuwin);
+
+                switch(choice)
+                {
+                        case KEY_UP:
+                                highlight--;
+                                if(highlight == -1)
+                                        highlight=0;
+                                break;
+                        case KEY_DOWN:
+                                highlight++;
+                                if(highlight == 3)
+                                    highlight = 2;
+                                break;
+                                default:
+                                break;
+                }
+                if(choice==10)
+                        break;
+        }
+        endwin();
+        temp = highlight;
+    return temp;
+}
+
+int Pastafari::menuJugador(){
+    int temp;
+    init_pair(2, COLOR_BLACK, COLOR_GREEN);;
+        bkgd( COLOR_PAIR(1) );
+                noecho();
+                cbreak();
+                mvprintw(2, 10, "PASTAFARI: LA VENGANZA DE MONESVOL");  
+                int yMax, xMax;
+                getmaxyx(stdscr, yMax, xMax);
+                WINDOW * menuwin = newwin(5, xMax-20, yMax-20,2);
+                box(menuwin, 0, 0);
+                refresh();
+                wrefresh(menuwin);
+                keypad(menuwin, true);
+                string choices[3]={"Comenzar historia...","About...", "Logout"};
+                int choice;
+                int highlight = 0;
+
+        while(1)
+        {
+                for(int i = 0; i < 3; i++)
+                {
+                        if(i == highlight)
+                                wattron(menuwin,A_REVERSE);
+                        mvwprintw(menuwin,i+1,1,choices[i].c_str());
+                        wattroff(menuwin, A_REVERSE);
+                }
+                choice = wgetch(menuwin);
+
+                switch(choice)
+                {
+                        case KEY_UP:
+                                highlight--;
+                                if(highlight == -1)
+                                        highlight=0;
+                                break;
+                        case KEY_DOWN:
+                                highlight++;
+                                if(highlight == 3)
+                                    highlight = 2;
+                                break;
+                                default:
+                                break;
+                }
+                if(choice==10)
+                        break;
+        }
+        endwin();
+        temp = highlight;
+    return temp;
 }
