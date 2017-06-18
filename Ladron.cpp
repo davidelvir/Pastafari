@@ -82,7 +82,7 @@ void Ladron::Habilidad2(Personaje* enemigo){//El golpe tiene probabilidad de cri
 
 }
 void Ladron::Comprar(double dinero){}
-        .
+        
 void Ladron::CortarPelo(double dinero){}
 
 

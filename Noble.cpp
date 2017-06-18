@@ -30,7 +30,7 @@ void Noble::Habilidad2(Personaje* aliado){
 }
 
 void Noble::Comprar(double dinero){}
-        .
+        
 void Noble::CortarPelo(double dinero){}
 
 
