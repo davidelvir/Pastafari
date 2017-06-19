@@ -4,7 +4,7 @@
 using namespace std;
 
 void Pastafari::run(){
-	 
+	    
         Jugador jugadorRaiz;
         Administrador adminRaiz;
         adminRaiz.setUsername("u");
@@ -20,17 +20,15 @@ void Pastafari::run(){
         while(menuPrincipal=="s"||menuPrincipal=="S"){
                 initscr();                      /* Start curses mode */
                 start_color();
-                refresh();
-                        
+                refresh();      
                 opcionMenu =  menu();
         
-        //printw("Your choice was: %s", choices[highlight].c_str());
         if(opcionMenu == 1)
         {
         	    refresh();
         	    echo();
         	    clear();
-                char resp[2];
+                char resp[100];
                 Jugador* jugadorTemp2;
                 jugadorTemp2 = agregarJugador(jugadores);
                 jugadores.push_back(jugadorTemp2);
