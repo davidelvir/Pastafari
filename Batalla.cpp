@@ -143,7 +143,7 @@ int turnoEnemigo=0;
         strcpy(cstr2, nombreHeroe.c_str());
         
         acum++;
-        mvprintw(acum, 10, "Ha atacado el enemigo, Reporte de Daños: ");
+        mvprintw(acum, 10, "El enemigo a atacado, Reporte de Daños: ");
         acum++;
         mvprintw(acum, 10, "La salud del Aliado  %s es: %d",cstr,vida);
         acum++;
