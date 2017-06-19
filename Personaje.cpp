@@ -104,3 +104,5 @@ void Personaje::setEstiloCabello(string estilo){estiloCabello = estilo;}
 
 int Personaje::getBolas(){return Bolas;}
 void Personaje::setBolas(int bolas){Bolas = bolas;}
+
+string Personaje::Provocar(){return "Inútil!!";}

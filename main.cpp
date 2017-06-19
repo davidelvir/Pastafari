@@ -23,7 +23,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
-#include <stdlib.h>
+#includ <stdlib.h>
 #include <fstream>
 #include <sstream>
 using namespace std;
