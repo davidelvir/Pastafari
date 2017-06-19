@@ -33,6 +33,9 @@
 #include <vector>
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
+#include <unistd.h>
+
 
 #ifndef PASTAFARI_H
 #define PASTAFARI_H
@@ -58,6 +61,7 @@ class Pastafari{
 		int menuPersonaje();
 		Jugador* agregarJugador(vector<Jugador*> jugadores);
 		void listarJugadores(vector<Jugador*>);
+		void sleep(int);
 
 
 };

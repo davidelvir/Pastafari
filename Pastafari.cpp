@@ -1,5 +1,6 @@
 #include "Pastafari.h"
 
+
 using namespace std;
 
 void Pastafari::run(){
@@ -20,6 +21,7 @@ void Pastafari::run(){
                 initscr();                      /* Start curses mode */
                 start_color();
                 refresh();
+                        
                 opcionMenu =  menu();
         
         //printw("Your choice was: %s", choices[highlight].c_str());
@@ -33,7 +35,9 @@ void Pastafari::run(){
                 jugadorTemp2 = agregarJugador(jugadores);
                 jugadores.push_back(jugadorTemp2);
                 clear();   
+
                 mvprintw(2, 10, "Se agrego exitosamente!");
+
                 mvprintw(3, 10, "Presione enter para continuar...");
                 getstr(resp);
                 clear();
@@ -270,6 +274,7 @@ void Pastafari::run(){
                                                     bool esferas = false;
                                                     bool boolPartida = true;
                                                     while(boolPartida==true){
+                                                        clear();
                                                     mvprintw(2, 10, "1.) Modo historia");
                                                     mvprintw(3, 10, "2.) Tienda");
                                                     mvprintw(4, 10, "3.) Entrenar con el Maestro-Jedi Ing.Bocanegra");
@@ -283,11 +288,12 @@ void Pastafari::run(){
                                                     string tempResp(resp);
                                                         if(tempResp=="1"){
                                                             //Modo  Historia
-
-
+                                                            
                                                         }
                                                         if(tempResp=="2"){
                                                             //Tienda
+                                                            raiz->getPersonaje()->Comprar(raiz->getPersonaje()->getDinero());
+
                                                         }
                                                         if(tempResp=="3"){
                                                             //Entrenar
@@ -674,4 +680,13 @@ void Pastafari :: listarJugadores(vector<Jugador*> jugadores){
         delete [] cstr;
     }
 
+}
+
+void Pastafari::sleep(int a)
+{
+    time_t t1,t2;
+    t1 = time(NULL);
+                   t2 = time(NULL);
+    while ((t2 - t1)*1000 < a)
+    t2 = time(NULL);
 }
