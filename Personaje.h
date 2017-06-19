@@ -85,6 +85,9 @@ public:
 	virtual void CortarPelo(double)=0;
 	virtual void ArmaEspecial(Personaje*,Personaje*)=0;
 
+	virtual string Provocar();
+	
+
 	friend istream& operator >> (istream& in, Personaje& personaje){
 		char buffer[256];
 		in.getline(buffer, 256);

@@ -16,6 +16,8 @@ public:
   
   virtual void CortarPelo(double);
   virtual void ArmaEspecial(Personaje*,Personaje*);
+
+  virtual string Provocar();
 };
 
 #endif

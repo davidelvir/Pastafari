@@ -150,3 +150,5 @@ void ElfoGuerrero::CortarPelo(double dinero){
 
 void ElfoGuerrero::ArmaEspecial(Personaje* tem,Personaje* tem2){}
 
+string ElfoGuerrero::Provocar(){return "Tus orejas dan pena!!";}
+
