@@ -1,5 +1,13 @@
 #include "Humano.h"
-#include "Guerrero.h"	
+#include "Guerrero.h"
+#include <string>
+#include <sstream>
+#include <iostream>
+#include <typeinfo>
+#include <ncurses.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <fstream>
 
 Guerrero::Guerrero(string Nombre, double Vida, double Defensa, double Ataque,string Reputacion,int Nivel,int Experiencia,int Bolas,string estiloCabello, string Color, double Dinero){
   this->Nombre=Nombre;
@@ -48,83 +56,128 @@ void Guerrero::Habilidad2(Personaje* enemigo){
 void Guerrero::Comprar(double dinero){
   int op;
   bool vivo = true;
+  char resp[100];
 
   while(vivo){
-    cout<<"Bienvenido a la tienda !!"<<endl;
-    cout<<"Elija el item que desea comprar: "<<endl;
-    cout<<"1. Espada de acero. -- 100 Pastas"<<endl;
-    cout<<"2. Armadura mediana. -- 100 Pastas"<<endl;
-    cout<<"3. Esfera del dragon. -- 2000 Pastas"<<endl;
-    cout<<"4. Salir"<<endl;
-    cin>>op;
+    clear();
+    mvprintw(2, 10, "BIENVENIDO A LA TIENDA !!");
+    mvprintw(3, 10, "Elija el item que desea comprar");
+    mvprintw(4, 10, "1.) Espada de acero. -- 100 Pastas");
+    mvprintw(5, 10, "2.) Armadura mediana. -- 100 Pastas");
+    mvprintw(6, 10, "3.) Esfera del dragon. -- 2000 Pastas");
+    mvprintw(7, 10, "4.) Salir");
+    getstr(resp);
+    string temp(resp);
+    op = atoi(temp.c_str());
     switch(op){
       case 1:
       if(Dinero<100){
-        cout<<"NO tiene dinero suficiente !"<<endl;
+         mvprintw(9, 10, "No tiene dinero suficiente.");
+         mvprintw(10, 10, "Presione [ENTER] para continuar.");
+         getstr(resp);
+         clear();
       }else{
         Dinero-=100;
         Ataque+=40;
-        cout<<"Gracias por la compra!"<<endl;
+        mvprintw(9, 10, "Gracias por la compra!");
+        mvprintw(10, 10, "Presione [ENTER] para continuar.");
+        getstr(resp);
+        clear();
       }
       break;
       case 2:
       if(Dinero<100){
-        cout<<"NO tiene dinero suficiente !"<<endl;
+         mvprintw(9, 10, "No tiene dinero suficiente.");
+         mvprintw(10, 10, "Presione [ENTER] para continuar.");
+         getstr(resp);
+         clear();
       }else{
         Dinero-=100;
         Defensa+=40;
-        cout<<"Gracias por la compra!"<<endl;
+        mvprintw(9, 10, "Gracias por la compra!");
+        mvprintw(10, 10, "Presione [ENTER] para continuar.");
+        getstr(resp);
+        clear();
       }
       break;
       case 3:
       if(Dinero<2000){
-        cout<<"NO tiene dinero suficiente !"<<endl;
+         mvprintw(9, 10, "No tiene dinero suficiente.");
+         mvprintw(10, 10, "Presione [ENTER] para continuar.");
+         getstr(resp);
+         clear();
       }else{
         Dinero-=2000;
         Bolas++;
-        cout<<"Gracias por la compra!"<<endl;
+        mvprintw(9, 10, "Gracias por la compra!");
+        mvprintw(10, 10, "Presione [ENTER] para continuar.");
+        getstr(resp);
+        clear();
       }
       break;
       case 4:
-      vivo = false;
-      cout<<"Gracias por venir!!"<<endl;
+        vivo = false;
+        mvprintw(9, 10, "Gracias por venir!");
+        mvprintw(10, 10, "Presione [ENTER] para continuar.");
+        getstr(resp);
+        clear();
     }
   }
 }
 
 void Guerrero::CortarPelo(double dinero){
+   
   int op;
   bool vivo = true;
+  char resp[100];
 
   while(vivo){
-    cout<<"Bienvenido a la barberia !!"<<endl;
-    cout<<"Elija el corte que desea comprar: "<<endl;
-    cout<<"1. Razurado. -- 50 Pastas"<<endl;
-    cout<<"2. Mohawk. -- 50 Pastas"<<endl;
-    cout<<"3. Salir"<<endl;
-    cin>>op;
+    clear();
+    mvprintw(2, 10, "BIENVENIDO A LA BARBERIA !!");
+    mvprintw(3, 10, "Elija el corte que desea comprar");
+    mvprintw(4, 10, "1.) Razurado a los lados, largo de arriba. -- 50 Pastas");
+    mvprintw(5, 10, "2.) Pelo largo. -- 50 Pastas");
+    mvprintw(6, 10, "3.) Salir");
+    getstr(resp);
+    string temp(resp);
+    op=atoi(temp.c_str());
     switch(op){
       case 1:
       if(Dinero<50){
-        cout<<"NO tiene dinero suficiente !"<<endl;
+        mvprintw(9, 10, "No tiene dinero suficiente.");
+        mvprintw(10, 10, "Presione [ENTER] para continuar.");
+        getstr(resp);
+        clear();;
       }else{
         Dinero-=50;
-        estiloCabello = "Razurado";
-        cout<<"Gracias por la compra!"<<endl;
+        estiloCabello = "Cola de caballo";
+        mvprintw(9, 10, "Gracias por la compra!");
+        mvprintw(10, 10, "Presione [ENTER] para continuar.");
+        getstr(resp);
+        clear();
       }
       break;
       case 2:
       if(Dinero<50){
-
-        cout<<"NO tiene dinero suficiente !"<<endl;
+         mvprintw(9, 10, "No tiene dinero suficiente.");
+         mvprintw(10, 10, "Presione [ENTER] para continuar.");
+         getstr(resp);
+         clear();;
       }else{
         Dinero-=50;
-        estiloCabello = "Mohawk";
-        cout<<"Gracias por la compra!"<<endl;
+        estiloCabello = "Pelo largo";
+        mvprintw(9, 10, "Gracias por la compra!");
+        mvprintw(10, 10, "Presione [ENTER] para continuar.");
+        getstr(resp);
+        clear();
       }
       break;
       case 3:
-      vivo = false;
+        vivo = false;
+        mvprintw(9, 10, "Gracias por venir!");
+        mvprintw(10, 10, "Presione [ENTER] para continuar.");
+        getstr(resp);
+        clear();
       break;
     }
   }

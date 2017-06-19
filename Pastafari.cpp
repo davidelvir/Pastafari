@@ -1,9 +1,10 @@
 #include "Pastafari.h"
 
+
 using namespace std;
 
 void Pastafari::run(){
-	 
+	    
         Jugador jugadorRaiz;
         Administrador adminRaiz;
         adminRaiz.setUsername("u");
@@ -19,21 +20,22 @@ void Pastafari::run(){
         while(menuPrincipal=="s"||menuPrincipal=="S"){
                 initscr();                      /* Start curses mode */
                 start_color();
-                refresh();
+                refresh();      
                 opcionMenu =  menu();
         
-        //printw("Your choice was: %s", choices[highlight].c_str());
         if(opcionMenu == 1)
         {
         	    refresh();
         	    echo();
         	    clear();
-                char resp[2];
+                char resp[100];
                 Jugador* jugadorTemp2;
                 jugadorTemp2 = agregarJugador(jugadores);
                 jugadores.push_back(jugadorTemp2);
                 clear();   
+
                 mvprintw(2, 10, "Se agrego exitosamente!");
+
                 mvprintw(3, 10, "Presione enter para continuar...");
                 getstr(resp);
                 clear();
@@ -270,6 +272,7 @@ void Pastafari::run(){
                                                     bool esferas = false;
                                                     bool boolPartida = true;
                                                     while(boolPartida==true){
+                                                        clear();
                                                     mvprintw(2, 10, "1.) Modo historia");
                                                     mvprintw(3, 10, "2.) Tienda");
                                                     mvprintw(4, 10, "3.) Entrenar con el Maestro-Jedi Ing.Bocanegra");
@@ -284,6 +287,9 @@ void Pastafari::run(){
                                                         if(tempResp=="1"){
                                                             Batalla* b1 = new Batalla();
                                                             //Modo  Historia
+
+                                                            
+
                                                             //5 batallas!
                                                             int nivel = raiz->getPersonaje()->getNivel();
                                                             if(nivel==1){
@@ -509,6 +515,8 @@ void Pastafari::run(){
                                                         }
                                                         if(tempResp=="2"){
                                                             //Tienda
+                                                            raiz->getPersonaje()->Comprar(raiz->getPersonaje()->getDinero());
+
                                                         }
                                                         if(tempResp=="3"){
                                                             //Entrenar
@@ -895,4 +903,13 @@ void Pastafari :: listarJugadores(vector<Jugador*> jugadores){
         delete [] cstr;
     }
 
+}
+
+void Pastafari::sleep(int a)
+{
+    time_t t1,t2;
+    t1 = time(NULL);
+                   t2 = time(NULL);
+    while ((t2 - t1)*1000 < a)
+    t2 = time(NULL);
 }
