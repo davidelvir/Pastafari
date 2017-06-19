@@ -168,6 +168,9 @@ void Pastafari::run(){
                                             if(menuContinuar==0){//NEW GAME
                                                 if(raiz->getPersonaje()==NULL){
                                                     clear();
+                                                    refresh();
+                                                    echo();
+                                                    initscr();
                                                     mvprintw(2, 10, "INGRESE JUGADOR QUE DESEA CREAR: ");
                                                     mvprintw(3, 10, "1) WITCHER");
                                                     mvprintw(4, 10, "2) GUERRERO");
@@ -176,12 +179,74 @@ void Pastafari::run(){
                                                     getstr(resp);
                                                     string temporal2(resp);
                                                     if(temporal2=="1"){
-                                                        raiz->setPersonaje(new Witcher());
+
+                                                        Personaje* witcher = new Witcher();
+                                                        clear();
+                                                        mvprintw(2, 10, "INGRESE NOMBRE DE SU WITCHER: ");
+                                                        getstr(resp);
+                                                        string nombre(resp);
+                                                        clear();
+                                                        mvprintw(2, 10, "INGRESE APODO DE SU WITCHER: ");
+                                                        getstr(resp);
+                                                        string Reputacion(resp);
+                                                        clear();
+                                                        mvprintw(2, 10, "INGRESE EL ESTILO DEL CABELLO PARA WITCHER: ");
+                                                        getstr(resp);
+                                                        string c(resp);
+                                                        
+                                                        witcher->setNombre(nombre);
+                                                        witcher->setReputacion(Reputacion);
+                                                        witcher->setEstiloCabello(c);
+
+
+                                                        raiz->setPersonaje(witcher);
+
                                                         clear();
                                                     }else if(temporal2=="2"){
-                                                        raiz->setPersonaje(new Guerrero());
+                                                        Humano* guerrero = new Guerrero();
+                                                        clear();
+                                                        mvprintw(2, 10, "INGRESE NOMBRE DE SU GUERRERO: ");
+                                                        getstr(resp);
+                                                        string nombre(resp);
+                                                        clear();
+                                                        mvprintw(2, 10, "INGRESE APODO DE SU GUERRERO: ");
+                                                        getstr(resp);
+                                                        string Reputacion(resp);
+                                                        clear();
+                                                        mvprintw(2, 10, "INGRESE EL ESTILO DEL CABELLO PARA GUERRERO: ");
+                                                        getstr(resp);
+                                                        string c(resp);
+                                                        mvprintw(2, 10, "INGRESE EL COLOR DE PIEL PARA EL GUERRERO: ");
+                                                        getstr(resp);
+                                                        string l(resp);
+                                                        guerrero->setNombre(nombre);
+                                                        guerrero->setReputacion(Reputacion);
+                                                        guerrero->setEstiloCabello(c);
+                                                        guerrero->setColor(l);
+
+
+                                                        raiz->setPersonaje(guerrero);
                                                     }else if(temporal2 == "3"){
-                                                        raiz->setPersonaje(new ElfoGuerrero());
+                                                        Elfo* elfoGuerrero = new ElfoGuerrero();
+                                                        clear();
+                                                        mvprintw(2, 10, "INGRESE NOMBRE DE SU ELFOGUERRERO: ");
+                                                        getstr(resp);
+                                                        string nombre(resp);
+                                                        clear();
+                                                        mvprintw(2, 10, "INGRESE APODO DE SU ELFOGUERRERO: ");
+                                                        getstr(resp);
+                                                        string Reputacion(resp);
+                                                        clear();
+                                                        mvprintw(2, 10, "INGRESE EL TAMAÑO DE OREJAS PARA EL GUERRERO: ");
+                                                        getstr(resp);
+                                                        string l(resp);
+                                                        int lo=atoi(l.c_str());
+                                                        elfoGuerrero->setNombre(nombre);
+                                                        elfoGuerrero->setReputacion(Reputacion);
+                                                        elfoGuerrero->setTamOrejas(lo);
+
+
+                                                        raiz->setPersonaje(elfoGuerrero);
                                                     }else{
                                                          clear();
                                                          mvprintw(2, 10, "No existe esa opcion...");
@@ -199,6 +264,9 @@ void Pastafari::run(){
                                             if(menuContinuar==1){//CONTINUAR PARTIDA
                                                 if(raiz->getPersonaje()!=NULL){
                                                     clear();
+                                                    refresh();
+                                                    echo();
+                                                    initscr();  
                                                     bool esferas = false;
                                                     bool boolPartida = true;
                                                     while(boolPartida==true){
@@ -211,22 +279,25 @@ void Pastafari::run(){
                                                     esferas = true;
                                                     }
                                                     getstr(resp);
+                                                    clear();
                                                     string tempResp(resp);
                                                         if(tempResp=="1"){
+                                                            //Modo  Historia
+
 
                                                         }
                                                         if(tempResp=="2"){
-                                                            
+                                                            //Tienda
                                                         }
                                                         if(tempResp=="3"){
-                                                            
+                                                            //Entrenar
                                                         }
                                                         if(tempResp=="4"){
                                                             boolPartida=false;
                                                         }
                                                         if(tempResp=="5"){
                                                             if(esferas==true){
-
+                                                                //Deseos
                                                             }else{
                                                                 clear();
                                                                 mvprintw(2, 10, "OPCION INCORRECTA");
@@ -268,6 +339,9 @@ void Pastafari::run(){
         }
         limpiarPantalla();
         char resp[2];	
+        refresh();
+        echo();
+        initscr();
         mvprintw(8, 10, "Desea continuar? [s/n]");
         mvprintw(9, 10, "Ingrese una opcion: ");
         getstr(resp);
