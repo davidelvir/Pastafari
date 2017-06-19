@@ -1,6 +1,8 @@
 #include "Jugador.h"
 #include "Personaje.h"
 #include "Persona.h"
+#include <stdio.h>
+#include <string.h>
 
 Jugador::Jugador(string nombre,string username,string contrasena,int edad,string carrera):Persona(nombre,username,contrasena,edad,carrera){
 	this->Nombre=Nombre;

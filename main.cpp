@@ -34,11 +34,12 @@ vector<Jugador*> cargarJugador(vector<Jugador*>);
 int main(){
 
   vector <Jugador*> jugadores;
+  vector <Jugador*> jugadores2;
 
   ifstream file("Jugador.txt");
 
   if(file.is_open()){
-    
+    jugadores= cargarJugador(jugadores2);
       
   } 
   
@@ -80,7 +81,7 @@ void guardarJugadorTXT(Jugador* p){
   archivo<<p->getPersonaje()->getAtaque()<<endl;
   archivo<<p->getPersonaje()->getReputacion()<<endl;
   archivo<<p->getPersonaje()->getNivel()<<endl;
-  archivo<<p->getPersonaje()->getExperiencia()<<endl;
+  archivo<<p->getPersonaje()->getExp()<<endl;
   archivo<<p->getPersonaje()->getBolas()<<endl;
   archivo<<p->getPersonaje()->getReputacion()<<endl;
   archivo<<p->getPersonaje()->getEstiloCabello()<<endl;
@@ -91,6 +92,8 @@ void guardarJugadorTXT(Jugador* p){
 }
 
 vector<Jugador*> cargarJugador(vector<Jugador*> jugadores){
+    ifstream file("Jugador.txt");
+
     for (int i = 0; i < jugadores.size(); ++i){
         file>>*jugadores[i];
     }

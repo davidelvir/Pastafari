@@ -9,7 +9,7 @@ void Pastafari::run(){
         adminRaiz.setUsername("u");
         adminRaiz.setPassword("p");
         vector<Jugador*> jugadores;
-        Jugador* cualquiera=new Jugador("Alessandro", "QWERTY","v",20,"Ing en Sistemas");
+        Jugador* cualquiera=new Jugador("Alessandro", "q","v",20,"Ing en Sistemas");
         jugadores.push_back(cualquiera);
         bool juego = true;
         int opcionMenu;
@@ -52,7 +52,8 @@ void Pastafari::run(){
                 while(juego == true)
                 {
                         char resp[2];
-                        mvprintw(2, 10, "PASTAFARI: LA VENGANZA DE MONESVOL");
+                        mvprintw(2, 10, "PASTAFARI: LA VENGANZA DE MONESVOL"); 
+                        mvprintw(3, 10, "-----------------------------------");
                         mvprintw(5, 10, "* Ingrese Usuario:");
                         getstr(resp);
                         string usuarioTemp(resp);
@@ -96,12 +97,30 @@ void Pastafari::run(){
 
                                                 }//end respInt 1
                                                 if(menuAdmin[0]=='2'){
-
+                                                    clear();
+                                                    listarJugadores(jugadores);
+                                                    mvprintw(1, 10, "Presione enter para salir: ");
+                                                    getstr(resp);
+                                                    clear();
                                                 }//end respInt 2
                                                 if(menuAdmin[0]=='3'){
+                                                     int pos;
+                                                     clear();
+                                                     mvprintw(2, 10, "BORRAR CUENTA: ");
+                                                     mvprintw(3, 10, "Ingrese cuenta que desearia borrar: ");
+                                                     getstr(resp);
+                                                     string temporal(resp);
+                                                     int b = atoi(temporal.c_str());
+                                                     jugadores.erase(jugadores.begin()+pos);
+                                                     clear();
+                                                     mvprintw(2, 10, "Se elimino exitosamente el jugador! ");
+                                                     mvprintw(3, 10, "Presione enter para salir: ");
+                                                     getstr(resp);
 
                                                 }//end respInt 3
                                                 if(menuAdmin[0]=='4'){
+
+                                                    //autodestruccion
 
                                                 }//end respInt 4
                                                 if(menuAdmin[0]=='5'){
@@ -135,22 +154,177 @@ void Pastafari::run(){
                             clear();
 
                         	if(jugadores[i]->getPassword().compare(contraTemp)==0){
-                        		//usuario raiz
+                        		Jugador* raiz=jugadores[i];
+                                bool loginRaiz=true;
                         		initscr();
                         		clear();
+                                while(loginRaiz==true){
                         		int menuJugadorTemp;
                                 menuJugadorTemp=menuJugador();
                                     if(menuJugadorTemp==0){
-                                        //Comenzar historia
+                                        //Crear personaje nuevo o continuar(si personaje es null tire un mensaje)
+                                        int menuContinuar;
+                                        menuContinuar = menuPersonaje();
+                                            if(menuContinuar==0){//NEW GAME
+                                                if(raiz->getPersonaje()==NULL){
+                                                    clear();
+                                                    refresh();
+                                                    echo();
+                                                    initscr();
+                                                    mvprintw(2, 10, "INGRESE JUGADOR QUE DESEA CREAR: ");
+                                                    mvprintw(3, 10, "1) WITCHER");
+                                                    mvprintw(4, 10, "2) GUERRERO");
+                                                    mvprintw(5, 10, "3) ELFO GUERRERO");
+                                                    mvprintw(6, 10, "Ingrese opcion: ");
+                                                    getstr(resp);
+                                                    string temporal2(resp);
+                                                    if(temporal2=="1"){
+
+                                                        Personaje* witcher = new Witcher();
+                                                        clear();
+                                                        mvprintw(2, 10, "INGRESE NOMBRE DE SU WITCHER: ");
+                                                        getstr(resp);
+                                                        string nombre(resp);
+                                                        clear();
+                                                        mvprintw(2, 10, "INGRESE APODO DE SU WITCHER: ");
+                                                        getstr(resp);
+                                                        string Reputacion(resp);
+                                                        clear();
+                                                        mvprintw(2, 10, "INGRESE EL ESTILO DEL CABELLO PARA WITCHER: ");
+                                                        getstr(resp);
+                                                        string c(resp);
+                                                        
+                                                        witcher->setNombre(nombre);
+                                                        witcher->setReputacion(Reputacion);
+                                                        witcher->setEstiloCabello(c);
+
+
+                                                        raiz->setPersonaje(witcher);
+
+                                                        clear();
+                                                    }else if(temporal2=="2"){
+                                                        Humano* guerrero = new Guerrero();
+                                                        clear();
+                                                        mvprintw(2, 10, "INGRESE NOMBRE DE SU GUERRERO: ");
+                                                        getstr(resp);
+                                                        string nombre(resp);
+                                                        clear();
+                                                        mvprintw(2, 10, "INGRESE APODO DE SU GUERRERO: ");
+                                                        getstr(resp);
+                                                        string Reputacion(resp);
+                                                        clear();
+                                                        mvprintw(2, 10, "INGRESE EL ESTILO DEL CABELLO PARA GUERRERO: ");
+                                                        getstr(resp);
+                                                        string c(resp);
+                                                        mvprintw(2, 10, "INGRESE EL COLOR DE PIEL PARA EL GUERRERO: ");
+                                                        getstr(resp);
+                                                        string l(resp);
+                                                        guerrero->setNombre(nombre);
+                                                        guerrero->setReputacion(Reputacion);
+                                                        guerrero->setEstiloCabello(c);
+                                                        guerrero->setColor(l);
+
+
+                                                        raiz->setPersonaje(guerrero);
+                                                    }else if(temporal2 == "3"){
+                                                        Elfo* elfoGuerrero = new ElfoGuerrero();
+                                                        clear();
+                                                        mvprintw(2, 10, "INGRESE NOMBRE DE SU ELFOGUERRERO: ");
+                                                        getstr(resp);
+                                                        string nombre(resp);
+                                                        clear();
+                                                        mvprintw(2, 10, "INGRESE APODO DE SU ELFOGUERRERO: ");
+                                                        getstr(resp);
+                                                        string Reputacion(resp);
+                                                        clear();
+                                                        mvprintw(2, 10, "INGRESE EL TAMAÑO DE OREJAS PARA EL GUERRERO: ");
+                                                        getstr(resp);
+                                                        string l(resp);
+                                                        int lo=atoi(l.c_str());
+                                                        elfoGuerrero->setNombre(nombre);
+                                                        elfoGuerrero->setReputacion(Reputacion);
+                                                        elfoGuerrero->setTamOrejas(lo);
+
+
+                                                        raiz->setPersonaje(elfoGuerrero);
+                                                    }else{
+                                                         clear();
+                                                         mvprintw(2, 10, "No existe esa opcion...");
+                                                         clear();
+                                                    }
+                                                }else{
+                                                    clear();
+                                                    mvprintw(2, 10, "Ya tiene un personaje!");
+                                                    mvprintw(3, 10, "Presione enter para seguir: ");
+                                                    getstr(resp);
+                                                    clear();
+
+                                                }
+                                            }
+                                            if(menuContinuar==1){//CONTINUAR PARTIDA
+                                                if(raiz->getPersonaje()!=NULL){
+                                                    clear();
+                                                    refresh();
+                                                    echo();
+                                                    initscr();  
+                                                    bool esferas = false;
+                                                    bool boolPartida = true;
+                                                    while(boolPartida==true){
+                                                    mvprintw(2, 10, "1.) Modo historia");
+                                                    mvprintw(3, 10, "2.) Tienda");
+                                                    mvprintw(4, 10, "3.) Entrenar con el Maestro-Jedi Ing.Bocanegra");
+                                                    mvprintw(5, 10, "4.) Atras...");
+                                                    if(raiz->getPersonaje()->getBolas()==7){
+                                                    mvprintw(6, 10, "5.) Pedir deseo a Shen Long");
+                                                    esferas = true;
+                                                    }
+                                                    getstr(resp);
+                                                    clear();
+                                                    string tempResp(resp);
+                                                        if(tempResp=="1"){
+                                                            //Modo  Historia
+
+
+                                                        }
+                                                        if(tempResp=="2"){
+                                                            //Tienda
+                                                        }
+                                                        if(tempResp=="3"){
+                                                            //Entrenar
+                                                        }
+                                                        if(tempResp=="4"){
+                                                            boolPartida=false;
+                                                        }
+                                                        if(tempResp=="5"){
+                                                            if(esferas==true){
+                                                                //Deseos
+                                                            }else{
+                                                                clear();
+                                                                mvprintw(2, 10, "OPCION INCORRECTA");
+                                                                mvprintw(2, 10, "Ingrese enter para continuar:");
+                                                                getstr(resp);
+                                                                clear();
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            if(menuContinuar==2){//LOGOUT
+                                                juego = false;
+                                                break;
+                                            }
+
                                     }
                                     if(menuJugadorTemp==1){
-                                        //About
+                                        historia();
                                     }
                                     if(menuJugadorTemp==2){
                                         juego=false;
+                                        loginRaiz=false;
                                     }
-                        		clear();
-                        	}
+                        		
+                        	}//while loginRaiz
+                        }//password usuario
                         }//else if usuario
                         else{
                         	limpiarPantalla();
@@ -165,6 +339,9 @@ void Pastafari::run(){
         }
         limpiarPantalla();
         char resp[2];	
+        refresh();
+        echo();
+        initscr();
         mvprintw(8, 10, "Desea continuar? [s/n]");
         mvprintw(9, 10, "Ingrese una opcion: ");
         getstr(resp);
@@ -188,6 +365,7 @@ void Pastafari::limpiarPantalla(){
 
 void Pastafari::historia(){
 		string historia;
+
         limpiarPantalla();
 }
 
@@ -325,15 +503,16 @@ int Pastafari :: menu(){
         bkgd( COLOR_PAIR(1) );
                 noecho();
                 cbreak();
-                mvprintw(2, 10, "PASTAFARI: LA VENGANZA DE MONESVOL");  
+                mvprintw(2, 10, "PASTAFARI: LA VENGANZA DE MONESVOL"); 
+                mvprintw(3, 10, "-----------------------------------");  
                 int yMax, xMax;
                 getmaxyx(stdscr, yMax, xMax);
-                WINDOW * menuwin = newwin(5, xMax-20, yMax-20,2);
+                WINDOW * menuwin = newwin(5, xMax-120, yMax-43,10);
                 box(menuwin, 0, 0);
                 refresh();
                 wrefresh(menuwin);
                 keypad(menuwin, true);
-                string choices[3]={"LOGIN","Crear cuenta", "Salir"};
+                string choices[3]={"LOGIN","CREAR CUENTA", "SALIR"};
                 int choice;
                 int highlight = 0;
 
@@ -377,15 +556,17 @@ int Pastafari::menuJugador(){
         bkgd( COLOR_PAIR(1) );
                 noecho();
                 cbreak();
-                mvprintw(2, 10, "PASTAFARI: LA VENGANZA DE MONESVOL");  
+                mvprintw(2, 10, "PASTAFARI: LA VENGANZA DE MONESVOL"); 
+                mvprintw(3, 10, "-----------------------------------"); 
+
                 int yMax, xMax;
                 getmaxyx(stdscr, yMax, xMax);
-                WINDOW * menuwin = newwin(5, xMax-20, yMax-20,2);
+                WINDOW * menuwin = newwin(5, xMax-120, yMax-43,10);
                 box(menuwin, 0, 0);
                 refresh();
                 wrefresh(menuwin);
                 keypad(menuwin, true);
-                string choices[3]={"Comenzar historia...","About...", "Logout"};
+                string choices[3]={"COMENZAR HISTORIA...","ABOUT...", "LOGOUT"};
                 int choice;
                 int highlight = 0;
 
@@ -421,4 +602,76 @@ int Pastafari::menuJugador(){
         endwin();
         temp = highlight;
     return temp;
+}
+
+int Pastafari :: menuPersonaje(){
+    int temp;
+    init_pair(2, COLOR_BLACK, COLOR_GREEN);;
+        bkgd( COLOR_PAIR(1) );
+                noecho();
+                cbreak();
+                mvprintw(2, 10, "PASTAFARI: LA VENGANZA DE MONESVOL"); 
+                mvprintw(3, 10, "-----------------------------------");  
+                int yMax, xMax;
+                getmaxyx(stdscr, yMax, xMax);
+                WINDOW * menuwin = newwin(5, xMax-120, yMax-43,10);
+                box(menuwin, 0, 0);
+                refresh();
+                wrefresh(menuwin);
+                keypad(menuwin, true);
+                string choices[3]={"NEW GAME","CONTINUAR...", "LOGOUT"};
+                int choice;
+                int highlight = 0;
+
+        while(1)
+        {
+                for(int i = 0; i < 3; i++)
+                {
+                        if(i == highlight)
+                                wattron(menuwin,A_REVERSE);
+                        mvwprintw(menuwin,i+1,1,choices[i].c_str());
+                        wattroff(menuwin, A_REVERSE);
+                }
+                choice = wgetch(menuwin);
+
+                switch(choice)
+                {
+                        case KEY_UP:
+                                highlight--;
+                                if(highlight == -1)
+                                        highlight=0;
+                                break;
+                        case KEY_DOWN:
+                                highlight++;
+                                if(highlight == 3)
+                                    highlight = 2;
+                                break;
+                                default:
+                                break;
+                }
+                if(choice==10)
+                        break;
+        }
+        endwin();
+        temp = highlight;
+    return temp;
+}
+
+void Pastafari :: listarJugadores(vector<Jugador*> jugadores){
+ char temp1[3];
+    for (int i = 0; i < jugadores.size(); ++i)
+    {
+        stringstream temp2;
+        string temp;
+        temp2 << i<<".) "<<"Nombre: " << jugadores[i]->getNombre()<<", Username: "
+                    << jugadores[i]->getUsername()<<", Password: "
+                    << jugadores[i]->getEdad()<<", Carrera: "
+                    << jugadores[i]->getCarrera();
+        temp = temp2.str();
+                    char *cstr = new char[temp.length() + 1];
+                    strcpy(cstr, temp.c_str());         
+        mvprintw(i+2, 10, cstr);
+        delete [] cstr;
+    }
+
 }
