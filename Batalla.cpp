@@ -46,32 +46,32 @@ int turnoEnemigo=0;
     //
     //Listar
   	for(int i=0; i<enemigos.size();i++){
-  		acum+=i;
+  		acum++;
         string nombre = enemigos[i]->getNombre();
                     char *cstr = new char[nombre.length() + 1];
                     strcpy(cstr, nombre.c_str());
-        mvprintw(acum, 10, "Enemigo: %i-) %c",i,cstr);
+        mvprintw(acum, 10, "Enemigo: %i-) %s",i,cstr);
         delete [] cstr;
   	}
     acum++;
   	mvprintw(acum, 10, "---------------------------------");
     acum++;
     mvprintw(acum, 10, "Estos son sus personajes: ");
-    
+    acum++;
     for(int i=0; i<Heroe->getAliados().size();i++){//por mientras listaremos hasta 4 hasta que se haga el setAliados
         acum+=i;
         string nombre = Heroe->getAliado(i)->getNombre();
                     char *cstr = new char[nombre.length() + 1];
                     strcpy(cstr, nombre.c_str());
-        mvprintw(acum, 10, "Aliado: %i-) %c",i,cstr);
+        mvprintw(acum, 10, "Aliado: %i-) %s",i,cstr);
         delete [] cstr;
     }
-
+    acum++;
     acum++;
     string nombre1 = Heroe->getNombre();
                     char *cstr1 = new char[nombre1.length() + 1];
                     strcpy(cstr1, nombre1.c_str());
-        mvprintw(acum, 10, "Heroe: %c",cstr1);
+        mvprintw(acum, 10, "Heroe: %s",cstr1);
         delete [] cstr1;
 
     //turnos
@@ -145,11 +145,11 @@ int turnoEnemigo=0;
         acum++;
         mvprintw(acum, 10, "Ha atacado el enemigo, Reporte de Daños: ");
         acum++;
-        mvprintw(acum, 10, "La salud del Aliado  %c es: %d",cstr,vida);
+        mvprintw(acum, 10, "La salud del Aliado  %s es: %d",cstr,vida);
         acum++;
-        mvprintw(acum, 10, "La salud del Heroe  %c es: %d",cstr2,vidaHeroe);
+        mvprintw(acum, 10, "La salud del Heroe  %s es: %d",cstr2,vidaHeroe);
         acum++;
-        mvprintw(acum, 10, "Toque enter para continuar");
+        mvprintw(acum, 10, "Toque [ENTER] para continuar");
         getstr(resp);
         delete [] cstr;
         delete [] cstr2;
@@ -162,6 +162,8 @@ int turnoEnemigo=0;
         mvprintw(acum, 10, "1-Atacar con Heroe principal");
         acum++;
         mvprintw(acum, 10, "2-Atacar con Aliado");
+        acum++;
+        move(acum,10);
     	getstr(resp);
         string temp(resp);
         op = atoi(temp.c_str());
@@ -194,6 +196,8 @@ int turnoEnemigo=0;
             mvprintw(acum, 10, "2-Hablidad 1");
     		acum++;
             mvprintw(acum, 10, "3-Hablidad 2");
+            acum++;
+            move(acum,10);
             getstr(resp);
             string temp2(resp);
             attack=atoi(temp2.c_str());
@@ -263,11 +267,11 @@ int turnoEnemigo=0;
     	    acum++;
             acum++;
     		for(int i=0; i<Heroe->getAliados().size();i++){//por mientras listaremos hasta 4 hasta que se haga el setAliados
-    			acum+=i;
+    			acum++;
                 string temporal=Heroe->getAliado(i)->getNombre();
                 char *ctrse = new char[temporal.length() + 1];
                 strcpy(ctrse, temporal.c_str());
-                mvprintw(acum, 10, "Aliado: %i.) %c ",i,ctrse);
+                mvprintw(acum, 10, "Aliado: %i.) %s ",i,ctrse);
                 delete [] ctrse;
     		}
             getstr(resp);
@@ -297,6 +301,8 @@ int turnoEnemigo=0;
             mvprintw(acum, 10, "2-habilidad 1");
             acum++;
             mvprintw(acum, 10, "3-habilidad 2");
+            acum++;
+            move(acum,10);
             getstr(resp);
             string cualquie(resp);
             attack=atoi(cualquie.c_str());
@@ -363,4 +369,9 @@ int turnoEnemigo=0;
 
 acum++;
 mvprintw(acum, 10, "La batalla ha terminado");
+int n =Heroe->getNivel();
+
+n++;
+Heroe->setNivel(n);
+
 }

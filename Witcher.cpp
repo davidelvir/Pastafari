@@ -191,4 +191,6 @@ void Witcher::CortarPelo(double dinero){
 
 void Witcher::ArmaEspecial(Personaje* tem,Personaje* tem2){}
 
+string Witcher::Provocar(){return "Ambas espadas son para matar monstruos!";}
+
 

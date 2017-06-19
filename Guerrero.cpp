@@ -186,4 +186,6 @@ void Guerrero::CortarPelo(double dinero){
 
 void Guerrero::ArmaEspecial(Personaje* tem,Personaje* tem2){}
 
+string Guerrero::Provocar(){return "Entrené toda mi vida para esto !";}
+
 
