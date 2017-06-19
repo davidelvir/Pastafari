@@ -282,8 +282,229 @@ void Pastafari::run(){
                                                     clear();
                                                     string tempResp(resp);
                                                         if(tempResp=="1"){
+                                                            Batalla* b1 = new Batalla();
                                                             //Modo  Historia
+                                                            //5 batallas!
+                                                            int nivel = raiz->getPersonaje()->getNivel();
+                                                            if(nivel==1){
+                                                                //Historia 1, llamamos a un metodo ue cuenta la primera historia
+                                                                //con ncurses y luego la batalla;
+                                                                Personaje* enemigo1= new Guerrero();
+                                                                enemigo1->setNombre("Ex Rey Oswaldo");
+                                                                Personaje* enemigo2= new Guerrero();
+                                                                enemigo2->setNombre("Alexi Cruz");
+                                                                Personaje* enemigo3= new Guerrero();
+                                                                enemigo3->setNombre("Marty McFly");
 
+                                                                vector <Personaje*> enemigos;
+
+                                                                enemigos.push_back(enemigo1);
+                                                                enemigos.push_back(enemigo2);
+                                                                enemigos.push_back(enemigo3);
+
+
+                                                                Personaje* Aliado1= new Witcher();
+                                                                Aliado1->setNombre("Jahaziel");
+                                                                Personaje* Aliado2= new Guerrero();
+                                                                Aliado2->setNombre("Alessandro");
+
+                                                                raiz->getPersonaje()->setAliado(Aliado1);
+                                                                raiz->getPersonaje()->setAliado(Aliado2);
+
+                                                                b1->BatallaEpica(raiz->getPersonaje(), enemigos,1);
+                                                                
+                                                            }
+
+                                                            if(nivel==2){
+
+                                                                Personaje* enemigo1= new Witcher();
+                                                                enemigo1->setNombre("Osman");
+                                                                Personaje* enemigo2= new ElfoGuerrero();
+                                                                enemigo2->setNombre("David Leonel");
+                                                                Personaje* enemigo3= new Guerrero();
+                                                                enemigo3->setNombre("David El TOPO");
+                                                                Personaje* enemigo4= new Guerrero();
+                                                                enemigo4->setNombre("Dennis");
+
+                                                                vector <Personaje*> enemigos;
+
+                                                                enemigos.push_back(enemigo1);
+                                                                enemigos.push_back(enemigo2);
+                                                                enemigos.push_back(enemigo3);
+                                                                enemigos.push_back(enemigo4);
+
+                                                                Personaje* Aliado1= new ElfoGuerrero();
+                                                                Aliado1->setNombre("Maluma BABY");
+                                                                Personaje* Aliado2= new Guerrero();
+                                                                Aliado2->setNombre("RICKY MARTIN");
+                                                                Personaje* Aliado3= new Witcher();
+                                                                Aliado3->setNombre("Freddie Mercury");
+
+                                                                raiz->getPersonaje()->setAliado(Aliado1);
+                                                                raiz->getPersonaje()->setAliado(Aliado2);
+                                                                raiz->getPersonaje()->setAliado(Aliado3);
+                                                                b1->BatallaEpica(raiz->getPersonaje(), enemigos,2);
+                                                                
+                                                            }                                                            
+
+                                                            if(nivel==3){
+
+                                                                Personaje* enemigo1= new Witcher();
+                                                                enemigo1->setNombre("Optimus Prime");
+                                                                Personaje* enemigo2= new Witcher();
+                                                                enemigo2->setNombre("HELL-BERT");
+                                                                Personaje* enemigo3= new Guerrero();
+                                                                enemigo3->setNombre("Madonna");
+                                                                Personaje* enemigo4= new Guerrero();
+                                                                enemigo4->setNombre("Chum Lee");
+
+                                                                vector <Personaje*> enemigos;
+
+                                                                enemigos.push_back(enemigo1);
+                                                                enemigos.push_back(enemigo2);
+                                                                enemigos.push_back(enemigo3);
+                                                                enemigos.push_back(enemigo4);
+
+                                                                Personaje* Aliado1= new Guerrero();
+                                                                Aliado1->setNombre("Aceituno");
+                                                                Personaje* Aliado2= new Guerrero();
+                                                                Aliado2->setNombre("Anastacio");
+                                                                Personaje* Aliado3= new Witcher();
+                                                                Aliado3->setNombre("METERPRETER");
+
+                                                                raiz->getPersonaje()->setAliado(Aliado1);
+                                                                raiz->getPersonaje()->setAliado(Aliado2);
+                                                                raiz->getPersonaje()->setAliado(Aliado3);
+                                                                b1->BatallaEpica(raiz->getPersonaje(), enemigos,3);
+                                                                
+
+                                                            }
+
+                                                            if(nivel==4){
+                                                                Personaje* enemigo1= new Witcher();
+                                                                enemigo1->setNombre("Optimus Prime");
+                                                                Personaje* enemigo2= new Witcher();
+                                                                enemigo2->setNombre("HELL-BERT");
+                                                                Personaje* enemigo3= new Guerrero();
+                                                                enemigo3->setNombre("Madonna");
+                                                                Personaje* enemigo4= new Guerrero();
+                                                                enemigo4->setNombre("Chum Lee");
+
+                                                                vector <Personaje*> enemigos;
+
+                                                                enemigos.push_back(enemigo1);
+                                                                enemigos.push_back(enemigo2);
+                                                                enemigos.push_back(enemigo3);
+                                                                enemigos.push_back(enemigo4);
+
+                                                                Personaje* Aliado1= new Guerrero();
+                                                                Aliado1->setNombre("Aceituno");
+                                                                Personaje* Aliado2= new Guerrero();
+                                                                Aliado2->setNombre("Anastacio");
+                                                                Personaje* Aliado3= new Witcher();
+                                                                Aliado3->setNombre("METERPRETER");
+
+                                                                raiz->getPersonaje()->setAliado(Aliado1);
+                                                                raiz->getPersonaje()->setAliado(Aliado2);
+                                                                raiz->getPersonaje()->setAliado(Aliado3);
+                                                                b1->BatallaEpica(raiz->getPersonaje(), enemigos,4);
+                                                                
+
+
+                                                            }
+
+                                                            if(nivel==5){
+
+                                                                Personaje* enemigo1= new Witcher();
+                                                                enemigo1->setNombre("Juan Orlando");
+                                                                Personaje* enemigo2= new Witcher();
+                                                                enemigo2->setNombre("HELL-BERT FASE 2");
+                                                                Personaje* enemigo3= new Witcher();
+                                                                enemigo3->setNombre("ADOLFO HITLER");
+                                                                Personaje* enemigo4= new Guerrero();
+                                                                enemigo4->setNombre("LUCIFER");
+                                                                Personaje* enemigo5= new ElfoGuerrero();
+                                                                enemigo5->setNombre("ZEUS");
+
+                                                                vector <Personaje*> enemigos;
+
+                                                                enemigos.push_back(enemigo1);
+                                                                enemigos.push_back(enemigo2);
+                                                                enemigos.push_back(enemigo3);
+                                                                enemigos.push_back(enemigo4);
+                                                                enemigos.push_back(enemigo5);
+
+
+                                                                Personaje* Aliado1= new Witcher();
+                                                                Aliado1->setNombre("JESUS");
+                                                                Personaje* Aliado2= new Guerrero();
+                                                                Aliado2->setNombre("ALLAH");
+                                                                Personaje* Aliado3= new ElfoGuerrero();
+                                                                Aliado3->setNombre("GAUTAMA BUDDAH");
+
+                                                                raiz->getPersonaje()->setAliado(Aliado1);
+                                                                raiz->getPersonaje()->setAliado(Aliado2);
+                                                                raiz->getPersonaje()->setAliado(Aliado3);
+                                                                b1->BatallaEpica(raiz->getPersonaje(), enemigos,5);
+                                                                
+                                                            }
+
+
+                                                            if(nivel==6&&raiz->getPersonaje()->getBolas()==7){
+                                                                //Con las esferas del dragon contra nasralla!
+
+
+                                                                Personaje* enemigo1= new Witcher();
+                                                                enemigo1->setNombre("Donald Trump");
+                                                                Personaje* enemigo2= new Witcher();
+                                                                enemigo2->setNombre("Elvis Presley");
+                                                                Personaje* enemigo3= new Witcher();
+                                                                enemigo3->setNombre("NATHALÍA (EX ALESSANDRO)");
+                                                                Personaje* enemigo4= new Guerrero();
+                                                                enemigo4->setNombre("VALERIA (Ex DAVID)-TICA");
+                                                                Personaje* enemigo5= new Witcher();
+                                                                enemigo5->setNombre("PAOLA (Ex JAHAZIEL)");
+                                                                Personaje* enemigo6= new ElfoGuerrero();
+                                                                enemigo6->setNombre("SALVADOR NASRALLA");
+
+                                                                enemigo6->setVida(700);
+                                                                enemigo6->setDefensa(600);
+                                                                enemigo6->setAtaque(600);
+                                                                
+                                                                vector <Personaje*> enemigos;
+
+                                                                enemigos.push_back(enemigo1);
+                                                                enemigos.push_back(enemigo2);
+                                                                enemigos.push_back(enemigo3);
+                                                                enemigos.push_back(enemigo4);
+                                                                enemigos.push_back(enemigo5);
+                                                                enemigos.push_back(enemigo6);
+
+
+                                                                Personaje* Aliado1= new Guerrero();
+                                                                Aliado1->setNombre("LEMPIRA");
+                                                                Personaje* Aliado2= new Guerrero();
+                                                                Aliado2->setNombre("GAL GADOT");
+                                                                Personaje* Aliado3= new ElfoGuerrero();
+                                                                Aliado3->setNombre("Scarlett Johansson");
+                                                                Personaje* Aliado4= new Guerrero();
+                                                                Aliado3->setNombre("ALESSANDRO FASE 2");
+                                                                Personaje* Aliado5= new ElfoGuerrero();
+                                                                Aliado3->setNombre("JAHAZIEL FASE 3");
+                                                                Personaje* Aliado6= new ElfoGuerrero();
+                                                                Aliado3->setNombre("DAVID FASE 2 /MALUMA-(FUSION)");
+
+                                                                raiz->getPersonaje()->setAliado(Aliado1);
+                                                                raiz->getPersonaje()->setAliado(Aliado2);
+                                                                raiz->getPersonaje()->setAliado(Aliado3);
+                                                                raiz->getPersonaje()->setAliado(Aliado4);
+                                                                raiz->getPersonaje()->setAliado(Aliado5);
+                                                                raiz->getPersonaje()->setAliado(Aliado6);
+
+                                                                b1->BatallaEpica(raiz->getPersonaje(), enemigos,6);
+                                                                   
+
+                                                            }
 
                                                         }
                                                         if(tempResp=="2"){

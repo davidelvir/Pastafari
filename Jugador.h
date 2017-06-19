@@ -40,7 +40,7 @@ class Jugador: public Persona{
 			in.getline(buffer4, 256);
 			jugador.Carrera = buffer4;
 
-			//in >> jugador.personaje;
+			in >> *jugador.personaje;
 
 			return in;
 		}
