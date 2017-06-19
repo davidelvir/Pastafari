@@ -23,7 +23,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
-#includ <stdlib.h>
+#include <stdlib.h>
 #include <fstream>
 #include <sstream>
 using namespace std;
@@ -43,7 +43,7 @@ int main(){
       
   } 
   
-	vector <Batalla*> batallas;
+//*	vector <Batalla*> batallas;
   
   Personaje* Heroe = new Witcher();
 
@@ -57,11 +57,34 @@ int main(){
 
   Heroe->setAliado(A1);
   Heroe->setAliado(A2);
-	Batalla* temp = new Batalla();
+	//Batalla* temp = new Batalla();
 
   //temp->BatallaEpica(Heroe);
   
-  
+  string nombre, username, pass, carrera;
+  int edad;
+  cout<<"Ingrese Nombre:"<<endl;
+  cin >>nombre;
+  cout<<"Ingrese username:"<<endl;
+  cin >>username;
+  cout<<"Ingrese pass:"<<endl;
+  cin >>pass;
+  cout<<"Ingrese edad:"<<endl;
+  cin >>edad;
+  cout<<"Ingrese carrera:"<<endl;
+  cin >>carrera;  
+
+	Jugador* jugador = new Jugador(nombre,username,pass,edad,carrera);
+	jugador->setPersonaje(Heroe);
+	guardarJugadorTXT(jugador);
+	jugadores.push_back(jugador);
+
+
+
+	cout<<jugadores[0]->getPersonaje()->getNombre();
+
+
+
 return 0;	
 }
 
