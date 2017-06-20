@@ -2,6 +2,9 @@
 #include <string>
 #include "Personaje.h"
 #include "Persona.h"
+#include "Witcher.h"
+#include "Guerrero.h"
+#include "ElfoGuerrero.h"
 
 using namespace std;
 
@@ -40,10 +43,30 @@ class Jugador: public Persona{
 			in.getline(buffer4, 256);
 			jugador.Carrera = buffer4;
 
-			in >> *jugador.personaje;
+			/*char buffer5[256];
+			in.getline(buffer5, 256);
+			string n = buffer5;
+	*/
+			/*if(n=="w"){
+
+				jugador.setPersonaje(new Witcher());
+			}
+			if(n=="g"){
+				jugador.setPersonaje(new Guerrero());	
+			}
+			if(n=="e"){
+				jugador.setPersonaje(new ElfoGuerrero());
+			}
+	*/
+			//in >> *jugador.personaje;
 
 			return in;
 		}
 
 };
 #endif
+
+
+
+
+

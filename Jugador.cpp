@@ -14,7 +14,7 @@ Jugador::Jugador(string nombre,string username,string contrasena,int edad,string
 }
 
 Jugador::Jugador(){
-
+	
 }
 
 Personaje* Jugador::getPersonaje(){

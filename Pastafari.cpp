@@ -1,7 +1,11 @@
 #include "Pastafari.h"
-
+#include <vector>
+#include <typeinfo>
 
 using namespace std;
+
+void guardarJugadorTXT(Jugador*);
+vector<Jugador*> cargarJugadorTXT(vector<Jugador*>, ifstream&);
 
 void Pastafari::run(){
 	    
@@ -10,8 +14,15 @@ void Pastafari::run(){
         adminRaiz.setUsername("u");
         adminRaiz.setPassword("p");
         vector<Jugador*> jugadores;
-        Jugador* cualquiera=new Jugador("Alessandro", "q","v",20,"Ing en Sistemas");
-        jugadores.push_back(cualquiera);
+        vector <Jugador*> jugadores2;
+
+        ifstream file("Jugador.txt");
+
+        if(file.is_open()){
+            jugadores = cargarJugadorTXT(jugadores2, file);
+        }
+
+
         bool juego = true;
         int opcionMenu;
  		string menuPrincipal;
@@ -73,7 +84,7 @@ void Pastafari::run(){
                                                 logout=true;
                                                 while(logout==true){
                                                         clear();
-                                                        char resp2[2];
+                                                        char resp2[8];
                                                 mvprintw(2, 10, "MENU Administrador");
                                                 mvprintw(3, 10, "1) Agregar cuentas");
                                                 mvprintw(4, 10, "2) Listar cuentas");
@@ -276,9 +287,10 @@ void Pastafari::run(){
                                                     mvprintw(2, 10, "1.) Modo historia");
                                                     mvprintw(3, 10, "2.) Tienda");
                                                     mvprintw(4, 10, "3.) Entrenar con el Maestro-Jedi Ing.Bocanegra");
-                                                    mvprintw(5, 10, "4.) Atras...");
+                                                    mvprintw(5, 10, "4.) Guardar Partida");
+                                                    mvprintw(6, 10, "5.) Atras...");
                                                     if(raiz->getPersonaje()->getBolas()==7){
-                                                    mvprintw(6, 10, "5.) Pedir deseo a Shen Long");
+                                                    mvprintw(7, 10, "6.) Pedir deseo a Shen Long");
                                                     esferas = true;
                                                     }
                                                     getstr(resp);
@@ -521,10 +533,18 @@ void Pastafari::run(){
                                                         if(tempResp=="3"){
                                                             //Entrenar
                                                         }
+
                                                         if(tempResp=="4"){
+                                                            //Entrenar
+                                                        	guardarJugadorTXT(raiz);
+
+
+                                                        }
+
+                                                        if(tempResp=="5"){
                                                             boolPartida=false;
                                                         }
-                                                        if(tempResp=="5"){
+                                                        if(tempResp=="6"){
                                                             if(esferas==true){
                                                                 //Deseos
                                                             }else{
@@ -912,4 +932,61 @@ void Pastafari::sleep(int a)
                    t2 = time(NULL);
     while ((t2 - t1)*1000 < a)
     t2 = time(NULL);
+}
+
+void guardarJugadorTXT(Jugador* p){
+  ofstream archivo;
+  string ruta="Nombres.txt";
+  stringstream ss;
+  ss<<"Jugador.txt";   
+
+  ruta=ss.str();
+  archivo.open(ruta.c_str(),ios::app);
+
+  archivo<<p->getNombre()<<endl<<p->getUsername()<<endl<< p->getPassword()<<endl<<p->getEdad()<<endl<<p->getCarrera()<<endl;
+
+  if(typeid(*p->getPersonaje())==typeid(Witcher)){
+    archivo<<"w"<<endl;
+
+  }
+
+  if (typeid(*p->getPersonaje())==typeid(Guerrero)){
+    archivo<<"g"<<endl;
+
+  }
+
+  if(typeid(*p->getPersonaje())==typeid(ElfoGuerrero)){
+    archivo<<"e"<<endl;
+
+  }
+
+  archivo<<p->getPersonaje()->getNombre()<<endl;
+  archivo<<p->getPersonaje()->getVida()<<endl;
+  archivo<<p->getPersonaje()->getDefensa()<<endl;
+  archivo<<p->getPersonaje()->getAtaque()<<endl;
+  archivo<<p->getPersonaje()->getReputacion()<<endl;
+  archivo<<p->getPersonaje()->getNivel()<<endl;
+  archivo<<p->getPersonaje()->getExp()<<endl;
+  archivo<<p->getPersonaje()->getBolas()<<endl;
+  archivo<<p->getPersonaje()->getReputacion()<<endl;
+  archivo<<p->getPersonaje()->getEstiloCabello()<<endl;
+  archivo<<p->getPersonaje()->getDinero()<<endl;
+  
+  archivo.close();
+    
+}
+
+vector<Jugador*> cargarJugadorTXT(vector<Jugador*> jugadores, ifstream &file){
+    
+
+    while(!file.eof()){
+        
+        Jugador* jugador= new Jugador();
+
+        file>>*jugador;
+        jugadores.push_back(jugador);
+    
+    }
+
+    return jugadores;
 }
