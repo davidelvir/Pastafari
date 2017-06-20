@@ -108,10 +108,10 @@ public:
 		personaje.Reputacion = buffer2;
 
 		in >> personaje.Nivel;
-		in.ignore(1, '\n');
+		//in.ignore(1, '\n');
 
 		in >> personaje.Experiencia;
-		in.ignore(1, '\n');
+		//in.ignore(1, '\n');
 
 		in >> personaje.Bolas;
 		in.ignore(1, '\n');

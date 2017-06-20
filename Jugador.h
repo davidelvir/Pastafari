@@ -14,12 +14,16 @@ class Jugador: public Persona{
     protected:
 
 	Personaje* personaje;
+	string n;
 
     public:
         Jugador(string,string,string,int,string);
         Jugador();
 		Personaje* getPersonaje();
 		void setPersonaje(Personaje*);
+
+		string getN();
+		void setN(string);
 
 		friend istream& operator >> (istream& in, Jugador& jugador){
 			char buffer[256];
@@ -43,10 +47,10 @@ class Jugador: public Persona{
 			in.getline(buffer4, 256);
 			jugador.Carrera = buffer4;
 
-			/*char buffer5[256];
+			char buffer5[256];
 			in.getline(buffer5, 256);
-			string n = buffer5;
-	*/
+			jugador.setN(buffer5);
+	
 			/*if(n=="w"){
 
 				jugador.setPersonaje(new Witcher());
@@ -57,9 +61,10 @@ class Jugador: public Persona{
 			if(n=="e"){
 				jugador.setPersonaje(new ElfoGuerrero());
 			}
-	*/
-			//in >> *jugador.personaje;
-
+	
+			in >> *jugador.personaje;
+			
+			*/
 			return in;
 		}
 

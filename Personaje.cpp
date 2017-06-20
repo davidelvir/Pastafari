@@ -7,7 +7,7 @@
 using namespace std;
 
 Personaje::Personaje(string Nombre, double Vida, double Defensa, double Ataque,string Reputacion,int Nivel,int Experiencia,int Bolas,string estiloCabello,double Dinero){
-
+	
 	this->Nombre=Nombre;
 	this->Vida=Vida;
 	this->Defensa=Defensa;

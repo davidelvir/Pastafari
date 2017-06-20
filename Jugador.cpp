@@ -24,3 +24,11 @@ Personaje* Jugador::getPersonaje(){
 void Jugador::setPersonaje(Personaje* personaje){
 	this->personaje=personaje;
 }
+
+string Jugador::getN(){
+	return n;
+}
+
+void Jugador::setN(string n){
+	this->n=n;
+}
