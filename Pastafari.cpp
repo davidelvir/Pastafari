@@ -322,6 +322,7 @@ void Pastafari::run(){
                                                             //5 batallas!
                                                             int nivel = raiz->getPersonaje()->getNivel();
                                                             if(nivel==1){
+                                                                historia();
                                                                 //Historia 1, llamamos a un metodo ue cuenta la primera historia
                                                                 //con ncurses y luego la batalla;
                                                                 Personaje* enemigo1= new Guerrero();
@@ -750,8 +751,30 @@ void Pastafari::run(){
     }
 
     void Pastafari::historia(){
-      string historia;
+      clear();
+      char resp[100];
+      mvprintw(1, 20,"LA HISTORIA DEL PASTAFARISMO, como una religion nacio");
+      mvprintw(2, 20,"para morirse... Erase una vez en una universidad muy");
+      mvprintw(3, 20,"conocida de Honduras, un grupo de programadores embistiendo");
+      mvprintw(4, 20,"los largos codigos de un laboratorio, cuando ninguno de ellos");
+      mvprintw(5, 20,"se imagino que revolucionarian la historia, ahi queridos amigos");
+      mvprintw(6, 20,"nacio el PASTAFARISMO, pero antes de continuar, ¿Que significa el");
+      mvprintw(7, 20,"PASTAFARISMO? Sin duda es una religion absoluta, que su ideologia");
+      mvprintw(8, 20,"pseudo-existente consume todas las entrañas de los seres humanos como");
+      mvprintw(9, 20,"tal convirtiendolos en zombies sin razon, y sin derecho a cuestionarse");
+      mvprintw(10, 20,"es un dictamen que les dicen como hablar y que comer... Estos eran los dias");
+      mvprintw(11, 20,"que todo el amor en el mundo desaparecio, y nadie se habia dado cuenta...");
+      mvprintw(12, 20,"Este dia comienza un mundo que ya termino, comienza un mundo que grita");
+      mvprintw(13, 20,"auxilio desesperadamente, un mundo donde los consumidos por MONESVOL");
+      mvprintw(14, 20,"como dictado por la religion catolica, ya no tienen alma, son seres"); 
+      mvprintw(15, 20,"impuros con una personalidad pecaminosa, que su unico proposito es");
+      mvprintw(16, 20,"dañar todo lo bueno que tenemos en este mundo...");
+      mvprintw(17, 20,"Ahora que ya sabes lo que te enfrentas, ¿TENDRAS LAS AGALLAS PARA");
+      mvprintw(18, 20,"VENCER A NASRALLA Y DEVOLVERLE EL PODER AL REY OSWALDO/HERMANO DE");
+      mvprintw(19, 20, "RICKY MARTIN?!");
 
+      mvprintw(20, 20, "Clickee [ENTER] para continuar...");
+      getstr(resp);
       limpiarPantalla();
   }
 
