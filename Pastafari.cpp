@@ -355,8 +355,9 @@ void Pastafari::run(){
                                                                 int n =raiz->getPersonaje()->getNivel();
 
                                                                 int pastaTemp = raiz->getPersonaje()->getDinero();
-                                                                raiz->getPersonaje()->setDinero(pastaTemp+800);
+                                                                raiz->getPersonaje()->setDinero(pastaTemp+1000);
                                                                 raiz->getPersonaje()->setNivel(n+1);
+                                                                raiz->getPersonaje()->setBolas(raiz->getPersonaje()->getBolas()+1);
 
                                                                 for (int i = 0; i < raiz->getPersonaje()->getAliados().size(); ++i)
                                                                 {
@@ -404,8 +405,9 @@ void Pastafari::run(){
                                                                 int n =raiz->getPersonaje()->getNivel();
 
                                                                 int pastaTemp = raiz->getPersonaje()->getDinero();
-                                                                raiz->getPersonaje()->setDinero(pastaTemp+800);
+                                                                raiz->getPersonaje()->setDinero(pastaTemp+1100);
                                                                 raiz->getPersonaje()->setNivel(n+1);
+                                                                raiz->getPersonaje()->setBolas(raiz->getPersonaje()->getBolas()+1);
 
                                                                 for (int i = 0; i < raiz->getPersonaje()->getAliados().size(); ++i)
                                                                 {
@@ -452,8 +454,9 @@ void Pastafari::run(){
                                                                 int n =raiz->getPersonaje()->getNivel();
 
                                                                 int pastaTemp = raiz->getPersonaje()->getDinero();
-                                                                raiz->getPersonaje()->setDinero(pastaTemp+800);
+                                                                raiz->getPersonaje()->setDinero(pastaTemp+1200);
                                                                 raiz->getPersonaje()->setNivel(n+1);
+                                                                raiz->getPersonaje()->setBolas(raiz->getPersonaje()->getBolas()+1);
 
                                                                 for (int i = 0; i < raiz->getPersonaje()->getAliados().size(); ++i)
                                                                 {
@@ -504,8 +507,9 @@ void Pastafari::run(){
                                                                 int n =raiz->getPersonaje()->getNivel();
 
                                                                 int pastaTemp = raiz->getPersonaje()->getDinero();
-                                                                raiz->getPersonaje()->setDinero(pastaTemp+800);
+                                                                raiz->getPersonaje()->setDinero(pastaTemp+1300);
                                                                 raiz->getPersonaje()->setNivel(n+1);
+                                                                raiz->getPersonaje()->setBolas(raiz->getPersonaje()->getBolas()+1);
 
                                                                 for (int i = 0; i < raiz->getPersonaje()->getAliados().size(); ++i)
                                                                 {
@@ -562,8 +566,9 @@ void Pastafari::run(){
                                                                 int n =raiz->getPersonaje()->getNivel();
 
                                                                 int pastaTemp = raiz->getPersonaje()->getDinero();
-                                                                raiz->getPersonaje()->setDinero(pastaTemp+800);
+                                                                raiz->getPersonaje()->setDinero(pastaTemp+2000);
                                                                 raiz->getPersonaje()->setNivel(n+1);
+                                                                raiz->getPersonaje()->setBolas(raiz->getPersonaje()->getBolas()+2);
 
                                                                 for (int i = 0; i < raiz->getPersonaje()->getAliados().size(); ++i)
                                                                 {
