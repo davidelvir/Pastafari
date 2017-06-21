@@ -308,8 +308,9 @@ void Pastafari::run(){
                                                         mvprintw(4, 10, "3.) Entrenar con el Maestro-Jedi Ing.Bocanegra");
                                                         mvprintw(5, 10, "4.) Guardar Partida");
                                                         mvprintw(6, 10, "5.) Atras...");
+                                                        mvprintw(7, 10, "6.) Cortar Pelo");
                                                         if(raiz->getPersonaje()->getBolas()==7){
-                                                            mvprintw(7, 10, "6.) Pedir deseo a Shen Long");
+                                                            mvprintw(8, 10, "7.) Pedir deseo a Shen Long");
                                                             esferas = true;
                                                         }
                                                         getstr(resp);
@@ -318,9 +319,6 @@ void Pastafari::run(){
                                                         if(tempResp=="1"){
                                                             Batalla* b1 = new Batalla();
                                                             //Modo  Historia
-
-                                                            
-
                                                             //5 batallas!
                                                             int nivel = raiz->getPersonaje()->getNivel();
                                                             if(nivel==1){
@@ -349,6 +347,22 @@ void Pastafari::run(){
                                                                 raiz->getPersonaje()->setAliado(Aliado2);
 
                                                                 b1->BatallaEpica(raiz->getPersonaje(), enemigos,1);
+                                                                clear();
+                                                                
+                                                                mvprintw(3, 10, "La batalla epica ha concluido!");
+                                                                mvprintw(4, 10, "Presione [Enter] para continuar...");
+                                                                getstr(resp);
+                                                                int n =raiz->getPersonaje()->getNivel();
+
+                                                                int pastaTemp = raiz->getPersonaje()->getDinero();
+                                                                raiz->getPersonaje()->setDinero(pastaTemp+800);
+                                                                raiz->getPersonaje()->setNivel(n+1);
+
+                                                                for (int i = 0; i < raiz->getPersonaje()->getAliados().size(); ++i)
+                                                                {
+                                                                    raiz->getPersonaje()->getAliados().erase(raiz->getPersonaje()->getAliados().begin()+i); 
+
+                                                                }
                                                                 
                                                             }
 
@@ -381,6 +395,23 @@ void Pastafari::run(){
                                                                 raiz->getPersonaje()->setAliado(Aliado2);
                                                                 raiz->getPersonaje()->setAliado(Aliado3);
                                                                 b1->BatallaEpica(raiz->getPersonaje(), enemigos,2);
+
+                                                                clear();
+                                                                
+                                                                mvprintw(3, 10, "La batalla epica ha concluido!");
+                                                                mvprintw(4, 10, "Presione [Enter] para continuar...");
+                                                                getstr(resp);
+                                                                int n =raiz->getPersonaje()->getNivel();
+
+                                                                int pastaTemp = raiz->getPersonaje()->getDinero();
+                                                                raiz->getPersonaje()->setDinero(pastaTemp+800);
+                                                                raiz->getPersonaje()->setNivel(n+1);
+
+                                                                for (int i = 0; i < raiz->getPersonaje()->getAliados().size(); ++i)
+                                                                {
+                                                                    raiz->getPersonaje()->getAliados().erase(raiz->getPersonaje()->getAliados().begin()+i); 
+
+                                                                }
                                                                 
                                                             }                                                            
 
@@ -413,6 +444,22 @@ void Pastafari::run(){
                                                                 raiz->getPersonaje()->setAliado(Aliado2);
                                                                 raiz->getPersonaje()->setAliado(Aliado3);
                                                                 b1->BatallaEpica(raiz->getPersonaje(), enemigos,3);
+                                                                clear();
+                                                                
+                                                                mvprintw(3, 10, "La batalla epica ha concluido!");
+                                                                mvprintw(4, 10, "Presione [Enter] para continuar...");
+                                                                getstr(resp);
+                                                                int n =raiz->getPersonaje()->getNivel();
+
+                                                                int pastaTemp = raiz->getPersonaje()->getDinero();
+                                                                raiz->getPersonaje()->setDinero(pastaTemp+800);
+                                                                raiz->getPersonaje()->setNivel(n+1);
+
+                                                                for (int i = 0; i < raiz->getPersonaje()->getAliados().size(); ++i)
+                                                                {
+                                                                    raiz->getPersonaje()->getAliados().erase(raiz->getPersonaje()->getAliados().begin()+i); 
+
+                                                                }
                                                                 
 
                                                             }
@@ -428,6 +475,10 @@ void Pastafari::run(){
                                                                 enemigo4->setNombre("Chum Lee");
 
                                                                 vector <Personaje*> enemigos;
+
+                                                                enemigo4->setVida(900);
+                                                                enemigo4->setDefensa(200);
+                                                                enemigo4->setAtaque(300);
 
                                                                 enemigos.push_back(enemigo1);
                                                                 enemigos.push_back(enemigo2);
@@ -445,6 +496,22 @@ void Pastafari::run(){
                                                                 raiz->getPersonaje()->setAliado(Aliado2);
                                                                 raiz->getPersonaje()->setAliado(Aliado3);
                                                                 b1->BatallaEpica(raiz->getPersonaje(), enemigos,4);
+                                                                clear();
+                                                                
+                                                                mvprintw(3, 10, "La batalla epica ha concluido!");
+                                                                mvprintw(4, 10, "Presione [Enter] para continuar...");
+                                                                getstr(resp);
+                                                                int n =raiz->getPersonaje()->getNivel();
+
+                                                                int pastaTemp = raiz->getPersonaje()->getDinero();
+                                                                raiz->getPersonaje()->setDinero(pastaTemp+800);
+                                                                raiz->getPersonaje()->setNivel(n+1);
+
+                                                                for (int i = 0; i < raiz->getPersonaje()->getAliados().size(); ++i)
+                                                                {
+                                                                    raiz->getPersonaje()->getAliados().erase(raiz->getPersonaje()->getAliados().begin()+i); 
+
+                                                                }
                                                                 
 
 
@@ -462,6 +529,10 @@ void Pastafari::run(){
                                                                 enemigo4->setNombre("LUCIFER");
                                                                 Personaje* enemigo5= new ElfoGuerrero();
                                                                 enemigo5->setNombre("ZEUS");
+
+                                                                enemigo2->setVida(1500);
+                                                                enemigo2->setDefensa(400);
+                                                                enemigo2->setAtaque(500);
 
                                                                 vector <Personaje*> enemigos;
 
@@ -483,6 +554,22 @@ void Pastafari::run(){
                                                                 raiz->getPersonaje()->setAliado(Aliado2);
                                                                 raiz->getPersonaje()->setAliado(Aliado3);
                                                                 b1->BatallaEpica(raiz->getPersonaje(), enemigos,5);
+                                                                clear();
+                                                                
+                                                                mvprintw(3, 10, "La batalla epica ha concluido!");
+                                                                mvprintw(4, 10, "Presione [Enter] para continuar...");
+                                                                getstr(resp);
+                                                                int n =raiz->getPersonaje()->getNivel();
+
+                                                                int pastaTemp = raiz->getPersonaje()->getDinero();
+                                                                raiz->getPersonaje()->setDinero(pastaTemp+800);
+                                                                raiz->getPersonaje()->setNivel(n+1);
+
+                                                                for (int i = 0; i < raiz->getPersonaje()->getAliados().size(); ++i)
+                                                                {
+                                                                    raiz->getPersonaje()->getAliados().erase(raiz->getPersonaje()->getAliados().begin()+i); 
+
+                                                                }
                                                                 
                                                             }
 
@@ -504,9 +591,9 @@ void Pastafari::run(){
                                                                 Personaje* enemigo6= new ElfoGuerrero();
                                                                 enemigo6->setNombre("SALVADOR NASRALLA");
 
-                                                                enemigo6->setVida(700);
-                                                                enemigo6->setDefensa(600);
-                                                                enemigo6->setAtaque(600);
+                                                                enemigo6->setVida(5000);
+                                                                enemigo6->setDefensa(900);
+                                                                enemigo6->setAtaque(900);
                                                                 
                                                                 vector <Personaje*> enemigos;
 
@@ -539,7 +626,22 @@ void Pastafari::run(){
                                                                 raiz->getPersonaje()->setAliado(Aliado6);
 
                                                                 b1->BatallaEpica(raiz->getPersonaje(), enemigos,6);
+                                                                clear();
+                                                                
+                                                                mvprintw(3, 10, "La batalla epica ha concluido!");
+                                                                mvprintw(4, 10, "Presione [Enter] para continuar...");
+                                                                getstr(resp);
+                                                                int n =raiz->getPersonaje()->getNivel();
 
+                                                                int pastaTemp = raiz->getPersonaje()->getDinero();
+                                                                raiz->getPersonaje()->setDinero(pastaTemp+800);
+                                                                raiz->getPersonaje()->setNivel(n+1);
+
+                                                                for (int i = 0; i < raiz->getPersonaje()->getAliados().size(); ++i)
+                                                                {
+                                                                    raiz->getPersonaje()->getAliados().erase(raiz->getPersonaje()->getAliados().begin()+i); 
+
+                                                                }
 
                                                             }
 
@@ -551,6 +653,7 @@ void Pastafari::run(){
                                                         }
                                                         if(tempResp=="3"){
                                                             //Entrenar
+                                                            raiz->getPersonaje()->Entrenamiento();
                                                         }
 
                                                         if(tempResp=="4"){
@@ -563,18 +666,28 @@ void Pastafari::run(){
                                                         if(tempResp=="5"){
                                                             boolPartida=false;
                                                         }
-                                                        if(tempResp=="6"){
+                                                        if(tempResp=="7"){
                                                             if(esferas==true){
                                                                 //Deseos
+                                                                raiz->getPersonaje()->BolasDelDragon();
+                                                                esferas=false;
+
                                                             }else{
                                                                 clear();
                                                                 mvprintw(2, 10, "OPCION INCORRECTA");
-                                                                mvprintw(2, 10, "Ingrese enter para continuar:");
+                                                                mvprintw(2, 10, "Ingrese [ENTER] para continuar:");
                                                                 getstr(resp);
                                                                 clear();
                                                             }
+                                                        }//fin temp resp
+
+                                                        if(tempResp=="6"){
+                                                            //cortar pelo
+                                                            raiz->getPersonaje()->CortarPelo(raiz->getPersonaje()->getDinero());
+
                                                         }
-                                                    }
+
+                                                    }//fin while
                                                 }
                                             }
                                             if(menuContinuar==2){//LOGOUT

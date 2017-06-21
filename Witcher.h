@@ -23,6 +23,8 @@ public:
 	
 	virtual void CortarPelo(double);
 	virtual void ArmaEspecial(Personaje*,Personaje*);
+	virtual void BolasDelDragon();
+	virtual void Entrenamiento();
 
 	virtual string Provocar();
 };

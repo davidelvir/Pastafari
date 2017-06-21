@@ -27,6 +27,7 @@ protected:
 	bool Stamina;
 	string estiloCabello;
 	double Dinero;
+	int nivelEntrenamiento;
 
 public:
 
@@ -79,6 +80,8 @@ public:
 	virtual void Atacar(Personaje*)=0;
 	virtual void Habilidad2(Personaje*)=0;
 	virtual void Habilidad1(Personaje*)=0;
+	virtual void BolasDelDragon()=0;
+	virtual void Entrenamiento()=0;
 
 	virtual void Comprar(double)=0;
 	

@@ -367,11 +367,4 @@ int turnoEnemigo=0;
     cont++;
 } 
 
-acum++;
-mvprintw(acum, 10, "La batalla ha terminado");
-int n =Heroe->getNivel();
-
-n++;
-Heroe->setNivel(n);
-
 }
