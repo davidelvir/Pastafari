@@ -15,15 +15,19 @@ class Jugador: public Persona{
 
 	Personaje* personaje;
 	string n;
+	int nivel;
 
     public:
-        Jugador(string,string,string,int,string);
+        Jugador(string,string,string,int,string, int);
         Jugador();
 		Personaje* getPersonaje();
 		void setPersonaje(Personaje*);
 
 		string getN();
 		void setN(string);
+
+		int getNivel();
+		void setNivel(int);
 
 		friend istream& operator >> (istream& in, Jugador& jugador){
 			char buffer[256];
@@ -50,6 +54,10 @@ class Jugador: public Persona{
 			char buffer5[256];
 			in.getline(buffer5, 256);
 			jugador.setN(buffer5);
+
+
+			in>>jugador.nivel;
+			in.ignore(1, '\n');
 	
 			/*if(n=="w"){
 

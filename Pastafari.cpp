@@ -60,13 +60,13 @@ void Pastafari::run(){
            Jugador* jugadorTemp2;
            jugadorTemp2 = agregarJugador(jugadores);
            jugadores.push_back(jugadorTemp2);
-           guardarJugadorTXT(jugadorTemp2);
+           
 
            clear();   
 
            mvprintw(2, 10, "Se agrego exitosamente!");
 
-           mvprintw(3, 10, "Presione enter para continuar...");
+           mvprintw(3, 10, "Presione [ENTER] para continuar...");
            getstr(resp);
            clear();
 
@@ -122,7 +122,7 @@ void Pastafari::run(){
                                jugadores.push_back(jugadorTemp);
                                clear();
                                mvprintw(2, 10, "Se agrego exitosamente!");
-                               mvprintw(3, 10, "Presione enter para continuar...");
+                               mvprintw(3, 10, "Presione [ENTER] para continuar...");
                                getstr(resp2);
 
 
@@ -131,7 +131,7 @@ void Pastafari::run(){
                                                 if(menuAdmin[0]=='2'){
                                                     clear();
                                                     listarJugadores(jugadores);
-                                                    mvprintw(1, 10, "Presione enter para salir: ");
+                                                    mvprintw(1, 10, "Presione [ENTER] para salir: ");
                                                     getstr(resp);
                                                     clear();
                                                 }//end respInt 2
@@ -146,7 +146,7 @@ void Pastafari::run(){
                                                    jugadores.erase(jugadores.begin()+pos);
                                                    clear();
                                                    mvprintw(2, 10, "Se elimino exitosamente el jugador! ");
-                                                   mvprintw(3, 10, "Presione enter para salir: ");
+                                                   mvprintw(3, 10, "Presione [ENTER] para salir: ");
                                                    getstr(resp);
 
                                                 }//end respInt 3
@@ -171,7 +171,7 @@ void Pastafari::run(){
                                                 if(menuAdmin[0]!='1'&&menuAdmin[0]!='2'&&menuAdmin[0]!='3'&&menuAdmin[0]!='4'&&menuAdmin[0]!='5'&&menuAdmin[0]!='6'){
                                                 	clear();
                                                     mvprintw(2, 10, "Numero equivocado!");
-                                                    mvprintw(3, 10, "Ingrese enter: ");
+                                                    mvprintw(3, 10, "Ingrese [ENTER]: ");
                                                     getstr(resp);
                                                 }
 
@@ -287,7 +287,7 @@ void Pastafari::run(){
                                                }else{
                                                 clear();
                                                 mvprintw(2, 10, "Ya tiene un personaje!");
-                                                mvprintw(3, 10, "Presione enter para seguir: ");
+                                                mvprintw(3, 10, "Presione [ENTER] para seguir: ");
                                                 getstr(resp);
                                                 clear();
 
@@ -299,6 +299,7 @@ void Pastafari::run(){
                                                     refresh();
                                                     echo();
                                                     initscr();  
+                                                    raiz->getPersonaje()->setNivel(raiz->getNivel());
                                                     bool esferas = false;
                                                     bool boolPartida = true;
                                                     while(boolPartida==true){
@@ -320,7 +321,7 @@ void Pastafari::run(){
                                                             Batalla* b1 = new Batalla();
                                                             //Modo  Historia
                                                             //5 batallas!
-                                                            int nivel = raiz->getPersonaje()->getNivel();
+                                                            int nivel = raiz->getNivel();
                                                             if(nivel==1){
                                                                 historia();
                                                                 //Historia 1, llamamos a un metodo ue cuenta la primera historia
@@ -351,13 +352,14 @@ void Pastafari::run(){
                                                                 clear();
                                                                 
                                                                 mvprintw(3, 10, "La batalla epica ha concluido!");
-                                                                mvprintw(4, 10, "Presione [Enter] para continuar...");
+                                                                mvprintw(4, 10, "Presione [ENTER] para continuar...");
                                                                 getstr(resp);
-                                                                int n =raiz->getPersonaje()->getNivel();
+                                                                int n =raiz->getNivel()+1;
 
                                                                 int pastaTemp = raiz->getPersonaje()->getDinero();
                                                                 raiz->getPersonaje()->setDinero(pastaTemp+1000);
-                                                                raiz->getPersonaje()->setNivel(n+1);
+                                                                raiz->setNivel(n);
+                                                                raiz->getPersonaje()->setNivel(n);
                                                                 raiz->getPersonaje()->setBolas(raiz->getPersonaje()->getBolas()+1);
 
                                                                 for (int i = 0; i < raiz->getPersonaje()->getAliados().size(); ++i)
@@ -403,11 +405,12 @@ void Pastafari::run(){
                                                                 mvprintw(3, 10, "La batalla epica ha concluido!");
                                                                 mvprintw(4, 10, "Presione [Enter] para continuar...");
                                                                 getstr(resp);
-                                                                int n =raiz->getPersonaje()->getNivel();
+                                                                int n =raiz->getNivel()+1;
 
                                                                 int pastaTemp = raiz->getPersonaje()->getDinero();
                                                                 raiz->getPersonaje()->setDinero(pastaTemp+1100);
-                                                                raiz->getPersonaje()->setNivel(n+1);
+                                                                raiz->setNivel(n);
+                                                                raiz->getPersonaje()->setNivel(n);
                                                                 raiz->getPersonaje()->setBolas(raiz->getPersonaje()->getBolas()+1);
 
                                                                 for (int i = 0; i < raiz->getPersonaje()->getAliados().size(); ++i)
@@ -452,11 +455,12 @@ void Pastafari::run(){
                                                                 mvprintw(3, 10, "La batalla epica ha concluido!");
                                                                 mvprintw(4, 10, "Presione [Enter] para continuar...");
                                                                 getstr(resp);
-                                                                int n =raiz->getPersonaje()->getNivel();
+                                                                int n =raiz->getNivel()+1;
 
                                                                 int pastaTemp = raiz->getPersonaje()->getDinero();
                                                                 raiz->getPersonaje()->setDinero(pastaTemp+1200);
-                                                                raiz->getPersonaje()->setNivel(n+1);
+                                                                raiz->setNivel(n);
+                                                                raiz->getPersonaje()->setNivel(n);
                                                                 raiz->getPersonaje()->setBolas(raiz->getPersonaje()->getBolas()+1);
 
                                                                 for (int i = 0; i < raiz->getPersonaje()->getAliados().size(); ++i)
@@ -505,11 +509,12 @@ void Pastafari::run(){
                                                                 mvprintw(3, 10, "La batalla epica ha concluido!");
                                                                 mvprintw(4, 10, "Presione [Enter] para continuar...");
                                                                 getstr(resp);
-                                                                int n =raiz->getPersonaje()->getNivel();
+                                                                int n =raiz->getNivel()+1;
 
                                                                 int pastaTemp = raiz->getPersonaje()->getDinero();
                                                                 raiz->getPersonaje()->setDinero(pastaTemp+1300);
-                                                                raiz->getPersonaje()->setNivel(n+1);
+                                                                raiz->setNivel(n);
+                                                                raiz->getPersonaje()->setNivel(n);
                                                                 raiz->getPersonaje()->setBolas(raiz->getPersonaje()->getBolas()+1);
 
                                                                 for (int i = 0; i < raiz->getPersonaje()->getAliados().size(); ++i)
@@ -564,11 +569,12 @@ void Pastafari::run(){
                                                                 mvprintw(3, 10, "La batalla epica ha concluido!");
                                                                 mvprintw(4, 10, "Presione [Enter] para continuar...");
                                                                 getstr(resp);
-                                                                int n =raiz->getPersonaje()->getNivel();
+                                                                int n =raiz->getNivel()+1;
 
                                                                 int pastaTemp = raiz->getPersonaje()->getDinero();
                                                                 raiz->getPersonaje()->setDinero(pastaTemp+2000);
-                                                                raiz->getPersonaje()->setNivel(n+1);
+                                                                raiz->setNivel(n);
+                                                                raiz->getPersonaje()->setNivel(n);
                                                                 raiz->getPersonaje()->setBolas(raiz->getPersonaje()->getBolas()+2);
 
                                                                 for (int i = 0; i < raiz->getPersonaje()->getAliados().size(); ++i)
@@ -637,11 +643,12 @@ void Pastafari::run(){
                                                                 mvprintw(3, 10, "La batalla epica ha concluido!");
                                                                 mvprintw(4, 10, "Presione [Enter] para continuar...");
                                                                 getstr(resp);
-                                                                int n =raiz->getPersonaje()->getNivel();
+                                                                int n =raiz->getNivel()+1;
 
                                                                 int pastaTemp = raiz->getPersonaje()->getDinero();
                                                                 raiz->getPersonaje()->setDinero(pastaTemp+800);
-                                                                raiz->getPersonaje()->setNivel(n+1);
+                                                                raiz->setNivel(n);
+                                                                raiz->getPersonaje()->setNivel(n);
 
                                                                 for (int i = 0; i < raiz->getPersonaje()->getAliados().size(); ++i)
                                                                 {
@@ -664,7 +671,8 @@ void Pastafari::run(){
 
                                                         if(tempResp=="4"){
                                                             //Guardar Personaje
-                                                        	guardarPersonajeTXT(raiz->getPersonaje());
+                                                        	//guardarPersonajeTXT(raiz->getPersonaje());
+                                                            guardarJugadorTXT(raiz);
 
 
                                                         }
@@ -902,7 +910,7 @@ while(verificar==0){
   string contra(resp);
   clear();
   Jugador* temp;
-  temp = new Jugador(nombre, t, contra, numEdad, carrera);
+  temp = new Jugador(nombre, t, contra, numEdad, carrera,1);
   return temp;
 }
 
@@ -1104,7 +1112,7 @@ void guardarJugadorTXT(Jugador* p){
   archivo.open(ruta.c_str(),ios::app);
 
   archivo<<p->getNombre()<<endl<<p->getUsername()<<endl<< p->getPassword()<<endl<<p->getEdad()<<endl<<p->getCarrera()<<endl;
-  archivo<<"w"<<endl;
+  archivo<<"w"<<endl<<p->getNivel()<<endl;
 
 /*
   */
@@ -1145,9 +1153,10 @@ void guardarPersonajeTXT(Personaje* p){
     archivo<<p->getNivel()<<endl;
     archivo<<p->getExp()<<endl;
     archivo<<p->getBolas()<<endl;
-    //archivo<<p->getReputacion()<<endl;
     archivo<<p->getEstiloCabello()<<endl;
     archivo<<p->getDinero()<<endl;
+
+
     archivo.close();
 
 }

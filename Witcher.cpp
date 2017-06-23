@@ -141,6 +141,7 @@ void Witcher::CortarPelo(double dinero){
 
   while(vivo){
     clear();
+    refresh();
     mvprintw(2, 10, "BIENVENIDO A LA BARBERIA !!");
     mvprintw(3, 10, "Elija el corte que desea comprar");
     mvprintw(4, 10, "PASTA: %i",money);
@@ -194,6 +195,7 @@ void Witcher::CortarPelo(double dinero){
 
 void Witcher::Entrenamiento(){
   clear();
+  refresh();
   string vivo="s";
   char resp[100];
   int money = Dinero;

@@ -4,13 +4,13 @@
 #include <stdio.h>
 #include <string.h>
 
-Jugador::Jugador(string nombre,string username,string contrasena,int edad,string carrera):Persona(nombre,username,contrasena,edad,carrera){
+Jugador::Jugador(string nombre,string username,string contrasena,int edad,string carrera,int nivel):Persona(nombre,username,contrasena,edad,carrera){
 	this->Nombre=Nombre;
     this->Username=Username;
     this->Password=Password;
     this->Edad=Edad;
     this->Carrera=Carrera;
-
+    this->nivel=nivel;
 }
 
 Jugador::Jugador(){
@@ -31,4 +31,12 @@ string Jugador::getN(){
 
 void Jugador::setN(string n){
 	this->n=n;
+}
+
+int Jugador::getNivel(){
+	return nivel;
+}
+
+void Jugador::setNivel(int nivel){
+	this->nivel=nivel;
 }
