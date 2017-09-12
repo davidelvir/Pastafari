@@ -7,6 +7,7 @@ using namespace std;
 void guardarJugadorTXT(Jugador*);
 void guardarPersonajeTXT(Personaje*);
 vector<Jugador*> cargarJugadorTXT(vector<Jugador*>, ifstream&);
+void printTitle();
 void cargarPersonaje2TXT(vector<Personaje*>, Jugador*, ifstream&, int);
 
 void Pastafari::run(){
@@ -84,9 +85,8 @@ void Pastafari::run(){
         while(juego == true)
         {
             char resp[2];
-            mvprintw(2, 10, "PASTAFARI: LA VENGANZA DE MONESVOL"); 
-            mvprintw(3, 10, "-----------------------------------");
-            mvprintw(5, 10, "* Ingrese Usuario:");
+            printTitle();
+            mvprintw(24, 10, "* Ingrese Usuario:");
             getstr(resp);
             string usuarioTemp(resp);
             limpiarPantalla();
@@ -761,25 +761,25 @@ void Pastafari::run(){
     void Pastafari::historia(){
       clear();
       char resp[100];
-      mvprintw(1, 20,"LA HISTORIA DEL PASTAFARISMO, como una religion nacio");
-      mvprintw(2, 20,"para morirse... Erase una vez en una universidad muy");
-      mvprintw(3, 20,"conocida de Honduras, un grupo de programadores embistiendo");
-      mvprintw(4, 20,"los largos codigos de un laboratorio, cuando ninguno de ellos");
-      mvprintw(5, 20,"se imagino que revolucionarian la historia, ahi queridos amigos");
-      mvprintw(6, 20,"nacio el PASTAFARISMO, pero antes de continuar, ¿Que significa el");
-      mvprintw(7, 20,"PASTAFARISMO? Sin duda es una religion absoluta, que su ideologia");
-      mvprintw(8, 20,"pseudo-existente consume todas las entrañas de los seres humanos como");
-      mvprintw(9, 20,"tal convirtiendolos en zombies sin razon, y sin derecho a cuestionarse");
-      mvprintw(10, 20,"es un dictamen que les dicen como hablar y que comer... Estos eran los dias");
-      mvprintw(11, 20,"que todo el amor en el mundo desaparecio, y nadie se habia dado cuenta...");
-      mvprintw(12, 20,"Este dia comienza un mundo que ya termino, comienza un mundo que grita");
-      mvprintw(13, 20,"auxilio desesperadamente, un mundo donde los consumidos por MONESVOL");
-      mvprintw(14, 20,"como dictado por la religion catolica, ya no tienen alma, son seres"); 
-      mvprintw(15, 20,"impuros con una personalidad pecaminosa, que su unico proposito es");
-      mvprintw(16, 20,"dañar todo lo bueno que tenemos en este mundo...");
-      mvprintw(17, 20,"Ahora que ya sabes lo que te enfrentas, ¿TENDRAS LAS AGALLAS PARA");
-      mvprintw(18, 20,"VENCER A NASRALLA Y DEVOLVERLE EL PODER AL REY OSWALDO/HERMANO DE");
-      mvprintw(19, 20, "RICKY MARTIN?!");
+      mvprintw(1, 20,"");
+      mvprintw(2, 20,"");
+      mvprintw(3, 20,"");
+      mvprintw(4, 20,"");
+      mvprintw(5, 20,"");
+      mvprintw(6, 20,"");
+      mvprintw(7, 20,"");
+      mvprintw(8, 20,"");
+      mvprintw(9, 20,"");
+      mvprintw(10,20,"");
+      mvprintw(11,20,"");
+      mvprintw(12,20,"");
+      mvprintw(13,20,"");
+      mvprintw(14,20,""); 
+      mvprintw(15,20,"");
+      mvprintw(16,20,"");
+      mvprintw(17,20,"");
+      mvprintw(18,20,"");
+      mvprintw(19,20,"");
 
       mvprintw(20, 20, "Clickee [ENTER] para continuar...");
       getstr(resp);
@@ -920,11 +920,10 @@ int Pastafari :: menu(){
     bkgd( COLOR_PAIR(1) );
     noecho();
     cbreak();
-    mvprintw(2, 10, "PASTAFARI: LA VENGANZA DE MONESVOL"); 
-    mvprintw(3, 10, "-----------------------------------");  
+    printTitle(); 
     int yMax, xMax;
     getmaxyx(stdscr, yMax, xMax);
-    WINDOW * menuwin = newwin(5, xMax-120, yMax-43,10);
+    WINDOW * menuwin = newwin(5, xMax-120, yMax-20,10);
     box(menuwin, 0, 0);
     refresh();
     wrefresh(menuwin);
@@ -973,12 +972,11 @@ int Pastafari::menuJugador(){
     bkgd( COLOR_PAIR(1) );
     noecho();
     cbreak();
-    mvprintw(2, 10, "PASTAFARI: LA VENGANZA DE MONESVOL"); 
-    mvprintw(3, 10, "-----------------------------------"); 
+    printTitle();
 
     int yMax, xMax;
     getmaxyx(stdscr, yMax, xMax);
-    WINDOW * menuwin = newwin(5, xMax-120, yMax-43,10);
+    WINDOW * menuwin = newwin(5, xMax-120, yMax-20,10);
     box(menuwin, 0, 0);
     refresh();
     wrefresh(menuwin);
@@ -1027,11 +1025,10 @@ int Pastafari :: menuPersonaje(){
     bkgd( COLOR_PAIR(1) );
     noecho();
     cbreak();
-    mvprintw(2, 10, "PASTAFARI: LA VENGANZA DE MONESVOL"); 
-    mvprintw(3, 10, "-----------------------------------");  
+    printTitle(); 
     int yMax, xMax;
     getmaxyx(stdscr, yMax, xMax);
-    WINDOW * menuwin = newwin(5, xMax-120, yMax-43,10);
+    WINDOW * menuwin = newwin(5, xMax-120, yMax-20,10);
     box(menuwin, 0, 0);
     refresh();
     wrefresh(menuwin);
@@ -1187,13 +1184,65 @@ void cargarPersonaje2TXT(vector<Personaje*> personajes, Jugador* destino, ifstre
 
 
 }
+void printTitle(){
+mvprintw(3, 10, "______  ___   _____ _____ ___  ______ ___  ______ _____   "); 
+mvprintw(4, 10, "| ___ |/ _ | /  ___|_   _/ _ | |  ___/ _ | | ___ |_   _|  "); 
+mvprintw(5, 10, "| |_/ / /_| | `--.  | |/ /_| || |_ / /_| || |_/ /  | | ");
+mvprintw(6, 10, "|  __/|  _  | `--. | | ||  _  ||  _||  _  ||    /  | | ");
+mvprintw(7, 10, "| |   | | | |/|__/ / | || | | || |  | | | || || | _| |__");
+mvprintw(8, 10, "|_|   |_| |_/|____/  |_/|_| |_/|_|  |_| |_/|_| |_||_____| ");
+mvprintw(9, 10, "                                                          ");
+mvprintw(10, 2, "                                                          ");
+mvprintw(14, 5, " _       ___    _   _ _____ _   _ _____   ___   _   _  ______  ___   ______ _____  ___  ________ _   _  _____ _____  _   _  _____ _  ");
+mvprintw(15, 5, "| |     / _  | | | | |  ___| | | |  __ | / _ | | | | ||___  / / _ |  |  _  |  ___| |  |/  |  _  | | | ||  ___/  ___|| | | ||  _  | |    ");
+mvprintw(16, 5, "| |    / /_| | | | | | |__ |  || | |  |// /_| ||  || |   / / / /_| | | | | | |__   | .  . | | | |  || || |__ | `--. | | | || | | | | ");
+mvprintw(17, 5, "| |    |  _  | | | | |  __|| . ` | | __ |  _  || . ` |  / /  |  _  | | | | |  __|  | ||/| | | | | . ` ||  __| `--. || | | || | | | |");
+mvprintw(18, 5, "| |____| | | | | |_/ / |___| ||  | |_| || | | || ||  |./ /___| | | | | |/ /| |___  | |  | | |_/ / ||  || |___/|__/ /| |_/ /| |_/ / |___");
+mvprintw(19, 5,  "|_____/|_| |_/  |___/|____/|_| |_/|____/|_| |_/|_| |_/|_____/|_| |_/ |___/ |____/  |_|  |_/|___/|_| |_/|____/|____/  |___/  |___/|_____/");
 
+}
 
+void printCastle(){
+	mvprintw(2, 10, "     >>                                                        >>");
+	mvprintw(2, 10, "     |                     >>            >>                    |");
+	mvprintw(2, 10, "     *                     |             |                     *");
+	mvprintw(2, 10, "    / |                    *             *                    / |");
+	mvprintw(2, 10, "   /___|                 _/ |           / |_                 /___| ");
+	mvprintw(2, 10, "   [   ]                |/   |_________/   ||                [   ]");
+	mvprintw(2, 10, "   [ I ]                /     |       /     |                [ I ]");
+	mvprintw(2, 10, "   [   ]_ _ _          /       |     /       |          _ _ _[   ]");
+	mvprintw(2, 10, "   [   ] U U |        {#########}   {#########}        | U U [   ]");
+	mvprintw(2, 10, "   [   ]====/          |=======/     |=======/          |====[   ]");
+	mvprintw(2, 10, "   [   ]    |           |   I |_ _ _ _| I   |           |    [   ]");
+	mvprintw(2, 10, "   [___]    |_ _ _ _ _ _|     | U U U |     |_ _ _ _ _ _|    [___]");
+	mvprintw(2, 10, "   |===/  I | U U U U U |     |=======|     | U U U U U | I  |===/");
+	mvprintw(2, 10, "    |=/     |===========| I   | + W + |   I |===========|     |=/");
+	mvprintw(2, 10, "     |  I   |           |     |_______|     |           |   I  |");
+	mvprintw(2, 10, "     |      |           |     |||||||||     |           |      |");
+	mvprintw(2, 10, "     |      |           |   I ||vvvvv|| I   |           |      |");
+	mvprintw(2, 10, " _-_-|______|-----------|_____||     ||_____|-----------|______|-_-_");
+	mvprintw(2, 10, "    /________|         /______||     ||______|         /________| ");
+	mvprintw(2, 10, "   |__________|-------|________|_____/________|-------|__________|");
 
+}
 
-
-
-
-
-
-
+     >>                                                        >>
+     |                     >>            >>                    |
+     *                     |             |                     *
+    / \                    *             *                    / \
+   /___\                 _/ \           / \_                 /___\
+   [   ]                |/   \_________/   \|                [   ]
+   [ I ]                /     \       /     \                [ I ]
+   [   ]_ _ _          /       \     /       \          _ _ _[   ]
+   [   ] U U |        {#########}   {#########}        | U U [   ]
+   [   ]====/          \=======/     \=======/          \====[   ]
+   [   ]    |           |   I |_ _ _ _| I   |           |    [   ]
+   [___]    |_ _ _ _ _ _|     | U U U |     |_ _ _ _ _ _|    [___]
+   \===/  I | U U U U U |     |=======|     | U U U U U | I  \===/
+    \=/     |===========| I   | + W + |   I |===========|     \=/
+     |  I   |           |     |_______|     |           |   I  |
+     |      |           |     |||||||||     |           |      |
+     |      |           |   I ||vvvvv|| I   |           |      |
+ _-_-|______|-----------|_____||     ||_____|-----------|______|-_-_
+    /________\         /______||     ||______\         /________\
+   |__________|-------|________\_____/________|-------|__________|
